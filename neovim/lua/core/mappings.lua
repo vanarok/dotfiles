@@ -3,11 +3,11 @@ local user_plugins = require('core.user')
 
 -- Mappings for plugins that need to be lazy loaded
 if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'nvim-tree') then
-  require('plugins.nvim-tree.mappings')
+    require('plugins.nvim-tree.mappings')
 end
 
 if not vim.tbl_contains(user_plugins.disable_builtin_plugins, 'auto-session') then
-  require('plugins.auto-session.mappings')
+    require('plugins.auto-session.mappings')
 end
 
 -- Quickfix mappings

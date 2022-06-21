@@ -1,43 +1,43 @@
 local _, colors = pcall(require, 'theme.colors')
 if not colors then
-  return
+    return
 end
 
 local set_highlight = require('theme.utils').set_highlight
 -- notification highlights
 set_highlight('NotifyINFOBorder', {
-  guifg = colors.hint,
+    guifg = colors.hint,
 })
 set_highlight('NotifyINFOTitle', {
-  guifg = colors.hint,
+    guifg = colors.hint,
 })
 set_highlight('NotifyINFOIcon', {
-  guifg = colors.hint,
+    guifg = colors.hint,
 })
 set_highlight('NotifyWARNBorder', {
-  guifg = colors.warn,
+    guifg = colors.warn,
 })
 set_highlight('NotifyWARNTitle', {
-  guifg = colors.warn,
+    guifg = colors.warn,
 })
 set_highlight('NotifyWARNIcon', {
-  guifg = colors.warn,
+    guifg = colors.warn,
 })
 set_highlight('NotifyERRORBorder', {
-  guifg = colors.error,
+    guifg = colors.error,
 })
 set_highlight('NotifyERRORTitle', {
-  guifg = colors.error,
+    guifg = colors.error,
 })
 set_highlight('NotifyERRORIcon', {
-  guifg = colors.error,
+    guifg = colors.error,
 })
 set_highlight('NotifyTRACEBorder', {
-  guifg = colors.trace,
+    guifg = colors.trace,
 })
 set_highlight('NotifyTRACETitle', {
-  guifg = colors.trace,
+    guifg = colors.trace,
 })
 set_highlight('NotifyTRACEIcon', {
-  guifg = colors.trace,
+    guifg = colors.trace,
 })

@@ -13,15 +13,15 @@ local d = ls.dynamic_node ]]
 
 -- Every unspecified option will be set to the default.
 ls.config.set_config(u.merge({
-  history = true,
-  -- Update more often, :h events for more info.
-  updateevents = 'TextChanged,TextChangedI',
-  enable_autosnippets = true,
+    history = true,
+    -- Update more often, :h events for more info.
+    updateevents = 'TextChanged,TextChangedI',
+    enable_autosnippets = true,
 }, config.luasnip or {}))
 
 ls.snippets = {
-  all = {},
-  html = {},
+    all = {},
+    html = {},
 }
 
 -- enable html snippets in javascript/javascript(REACT)

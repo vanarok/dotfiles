@@ -10,8 +10,8 @@ cmd([[
 local augroup_name = 'CosmicNvimEditor'
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
-  command = [[%s/\s\+$//e]],
-  group = group,
+    command = [[%s/\s\+$//e]],
+    group = group,
 })
 
 g.mapleader = ' '
@@ -44,12 +44,12 @@ opt.laststatus = 2
 opt.lazyredraw = true
 opt.list = true
 opt.listchars = {
-  tab = '❘-',
-  trail = '·',
-  lead = '·',
-  extends = '»',
-  precedes = '«',
-  nbsp = '×',
+    tab = '❘-',
+    trail = '·',
+    lead = '·',
+    extends = '»',
+    precedes = '«',
+    nbsp = '×',
 }
 opt.mouse = 'a'
 opt.number = true
