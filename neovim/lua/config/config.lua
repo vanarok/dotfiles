@@ -176,16 +176,17 @@ local config = {
     -- Add additional plugins
     add_plugins = {
         {
-            'akinsho/bufferline.nvim',
+            '~/Projects/bufferline.nvim',
             tag = 'v2.*',
             requires = { 'kyazdani42/nvim-web-devicons' },
             config = function()
                 require('bufferline').setup({
                     options = {
                         numbers = 'ordinal',
+                        diagnostics_pure = true,
                         diagnostics_indicator = function(count, level)
                             if level == 'error' then
-                                return ' ' .. count
+                                return ' '
                             end
                         end,
                         offsets = {
@@ -360,9 +361,6 @@ local config = {
             config = function()
                 vim.g.silicon['output'] = '~/Pictures/code/silicon-{time:%Y-%m-%d-%H%M%S}.png'
             end,
-        },
-        {
-            'editorconfig/editorconfig-vim',
         },
         {
             'folke/trouble.nvim',
