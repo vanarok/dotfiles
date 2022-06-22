@@ -24,7 +24,7 @@ vim.diagnostic.config(u.merge({
     severity_sort = true,
     float = {
         border = config.border,
-        focusable = false,
+        focusable = true,
         header = { icons.debug .. ' Diagnostics:', 'Normal' },
         source = 'always',
     },
