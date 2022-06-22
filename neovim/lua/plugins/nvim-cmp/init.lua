@@ -86,11 +86,11 @@ local default_cmp_opts = {
             -- Kind icons
             vim_item.kind = string.format('%s %s', icons.kind_icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
-                nvim_lsp = '[lsp]',
-                luasnip = '[snip]',
-                buffer = '[buf]',
-                path = '[path]',
-                nvim_lua = '[nvim_api]',
+                nvim_lsp = '[L]',
+                luasnip = '[S]',
+                buffer = '[B]',
+                path = '[P]',
+                nvim_lua = '[N]',
             })[entry.source.name]
             return vim_item
         end,
