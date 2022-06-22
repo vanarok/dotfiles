@@ -38,7 +38,7 @@ local default_cmp_opts = {
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
         }),
-        ['<Tab>'] = cmp.mapping(function(fallback)
+        ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -52,7 +52,7 @@ local default_cmp_opts = {
             'i',
             's',
         }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
+        ['<C-p>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -119,11 +119,11 @@ cmp.setup.filetype('TelescopePrompt', {
     enabled = false,
 })
 
--- cmp.setup.cmdline(':', {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = 'path' },
---   }, {
---     { name = 'cmdline' },
---   }),
--- })
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' },
+    }, {
+        { name = 'cmdline' },
+    }),
+})
