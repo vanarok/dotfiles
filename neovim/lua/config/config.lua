@@ -25,7 +25,7 @@ local config = {
     -- LSP settings
     lsp = {
         -- True/false or table of filetypes {'.ts', '.js',}
-        format_on_save = true,
+        format_on_save = { '*.ts', '*.json', '*.js', '*.vue', '*.html', '*.lua', '*.md' },
         -- Time in MS before format timeout
         format_timeout = 3000,
         -- Set to false to disable rename notification
