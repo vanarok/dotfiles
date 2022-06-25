@@ -62,13 +62,11 @@ opt.ttimeoutlen = 10
 opt.updatetime = 100
 opt.termguicolors = true
 
-cmd([[
-	filetype plugin indent on
-]])
-cmd([[au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}]])
+cmd('filetype plugin indent on')
+cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}')
 
 -- fix diagnostic color on galaxyine
-cmd('colorscheme github_light')
+-- cmd('colorscheme github_light')
 
 -- Common
 map('n', '<leader><leader>hs', ':nohlsearch<cr>')

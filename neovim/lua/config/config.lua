@@ -298,6 +298,7 @@ local config = {
         'takac/vim-hardtime',
         'ggandor/lightspeed.nvim',
         'wakatime/vim-wakatime',
+        'github/copilot.vim',
         {
             'yamatsum/nvim-nonicons',
             requires = { 'kyazdani42/nvim-web-devicons' },
