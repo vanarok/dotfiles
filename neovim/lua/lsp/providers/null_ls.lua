@@ -22,4 +22,17 @@ if config_opts.default_cosmic_sources then
     }, config_opts.sources or {})
 end
 
-require('null-ls').setup(u.merge(defaults, config_opts))
+require('null-ls').setup(u.merge(
+    defaults,
+    {
+        sources = vim.tbl_map(function(source)
+            return source.with({
+                diagnostics_postprocess = function(diagnostic)
+                    if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                        diagnostic.severity = vim.diagnostic.severity.WARN
+                    end
+                end,
+            })
+        end, config_opts.sources),
+    }
+))

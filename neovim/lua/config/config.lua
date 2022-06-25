@@ -52,6 +52,9 @@ local config = {
             -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
             null_ls = {
                 default_cosmic_sources = false,
+                fallback_severity = vim.diagnostic.severity.WARN,
+                default_timeout = 60000,
+                diagnostics_format = '[#{c}] #{m}',
                 sources = {
                     null_ls.builtins.code_actions.eslint_d,
                     null_ls.builtins.diagnostics.eslint_d.with({
