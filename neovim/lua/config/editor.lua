@@ -5,62 +5,85 @@ local o = vim.opt
 local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
 
+local indent = 4
 g.mapleader = ' '
+
+-- plugins
 g.hardtime_default_on = true
 g.ultest_use_pty = 1
 g.ultest_output_on_line = 0
-o.background = 'light'
 
-opt.title = true
-opt.cmdheight = 0
-opt.pumheight = 5
-opt.shiftwidth = 4
-opt.softtabstop = 4
-opt.tabstop = 4
-opt.scrolloff = 15
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.fillchars = 'vert: ,eob: '
-opt.guifont = 'JetBrains Mono:h10.5'
-opt.guifontwide = 'Symbols Nerd Font:h15'
-opt.list = true
-opt.listchars = {}
+-- misc
 opt.backspace = { 'eol', 'start', 'indent' }
 opt.clipboard = 'unnamedplus'
 opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
+
+-- indention
+opt.cmdheight = 0
+opt.pumheight = 7
 opt.autoindent = true
 opt.expandtab = true
+opt.shiftwidth = indent
 opt.smartindent = true
+opt.softtabstop = indent
+opt.tabstop = indent
+
+-- search
+opt.incsearch = true
 opt.hlsearch = false
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*', '*/dist/*' }
 opt.wildmenu = true
+
+-- ui
+opt.fillchars = 'vert: ,eob: '
+opt.title = true
+opt.guifont = 'JetBrains Mono:h10.5'
+opt.guifontwide = 'Symbols Nerd Font:h15'
 opt.cursorline = true
 opt.laststatus = 3
 opt.lazyredraw = true
+opt.list = true
+opt.listchars = {
+    tab = '❘-',
+    trail = '·',
+    lead = '·',
+    extends = '»',
+    precedes = '«',
+    nbsp = '×',
+}
 opt.mouse = 'a'
 opt.number = true
 opt.rnu = true
+opt.scrolloff = 18
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.signcolumn = 'yes'
 opt.splitbelow = true -- Open new split below
 opt.splitright = true -- Open new split to the right
 opt.wrap = false
+
+-- backups
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
+
+-- autocomplete
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
-opt.shortmess = opt.shortmess + { c = true }
+-- opt.shortmess = opt.shortmess + { c = true }
+
+-- perfomance
 opt.redrawtime = 1500
 opt.timeoutlen = 500
 opt.ttimeoutlen = 10
 opt.updatetime = 100
+
+-- theme
 opt.termguicolors = true
+o.background = 'light'
 
 cmd('filetype plugin indent on')
 cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}')
