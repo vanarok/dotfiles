@@ -106,6 +106,7 @@ return packer.startup(function()
                     require('plugins.luasnip')
                 end,
                 requires = {
+                    'sdras/vue-vscode-snippets',
                     'rafamadriz/friendly-snippets',
                 },
             },
