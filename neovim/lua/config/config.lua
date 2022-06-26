@@ -67,7 +67,7 @@ local config = {
                         },
                     }),
                     null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.code_actions.gitsigns,
+                    -- null_ls.builtins.code_actions.gitsigns,
                     null_ls.builtins.diagnostics.codespell,
                 },
             },
@@ -436,6 +436,13 @@ local config = {
                         strict = false, -- whether to interpret LSP strictly
                     },
                 })
+            end,
+        },
+        {
+            'kosayoda/nvim-lightbulb',
+            requires = 'antoinemadec/FixCursorHold.nvim',
+            config = function()
+                require('nvim-lightbulb').setup({ autocmd = { enabled = true }, ignore = { 'null-ls' } })
             end,
         },
     },
