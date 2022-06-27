@@ -39,7 +39,7 @@ opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*'
 opt.wildmenu = true
 
 -- ui
-opt.fillchars = 'vert: ,eob: '
+opt.fillchars = 'vert: ,eob: ,horiz: '
 opt.title = true
 opt.guifont = 'JetBrains Mono:h10.5'
 opt.guifontwide = 'Symbols Nerd Font:h15'
@@ -83,14 +83,13 @@ opt.updatetime = 100
 
 -- theme
 opt.termguicolors = true
-o.background = 'light'
+-- o.background = 'light'
 
 cmd('filetype plugin indent on')
 cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}')
-
+cmd('highlight FloatBorder guibg=red')
 -- fix diagnostic color on galaxyine
--- cmd('colorscheme github_light')
-
+cmd('colorscheme github_light')
 -- Common
 map('n', '<leader><leader>hs', ':nohlsearch<cr>')
 map('n', '<leader><leader>e', ':e ~/.config/nvim/lua/config/editor.lua<cr>', opts)

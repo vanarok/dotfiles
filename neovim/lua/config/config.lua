@@ -10,7 +10,7 @@ local config = {
         auto_session_suppress_dirs = { '~/', '~/Projects' },
     },
     -- See :h nvim_open_win for possible border options
-    border = 'single',
+    border = { '', '', ' ', ' ', '', '', ' ', ' ' },
     max_width = '100',
     -- https://github.com/numToStr/Comment.nvim#configuration-optional
     -- comment_nvim = {},
@@ -87,20 +87,18 @@ local config = {
     -- telescope = {},
     theme = 'github',
     theme_options = {
+        dev = true,
+        overrides = function(c)
+            return {
+                FloatBorder = { bg = c.red },
+            }
+        end,
         theme_style = 'light',
         keyword_style = 'italic',
         function_style = 'none',
         variable_style = 'none',
-        dev = true,
-        overrides = function(c)
-            return {
-                DiagnosticHintInv = {
-                    bg = c.red,
-                    fg = c.red,
-                },
-            }
-        end,
-        dark_sidebar = false,
+        dark_float = true,
+        dark_sidebar = true,
     },
     -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
     -- todo_comments = {},
