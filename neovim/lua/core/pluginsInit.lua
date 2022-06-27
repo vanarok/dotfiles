@@ -197,6 +197,7 @@ return packer.startup(function()
     -- lang/syntax stuff
     use({
         'nvim-treesitter/nvim-treesitter',
+        commit = 'd810c386341fbf0d49895a2cdd6a2b63b945b71a',
         requires = {
             'windwp/nvim-ts-autotag',
             'JoosepAlviste/nvim-ts-context-commentstring',
