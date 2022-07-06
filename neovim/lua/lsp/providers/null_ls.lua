@@ -3,36 +3,25 @@ local defaults = require('lsp.providers.defaults')
 local null_ls = require('null-ls')
 local config = require('core.user')
 
-local config_opts = config.lsp.servers.null_ls or {}
+local options = {
+  default_cosmic_sources = false,
+  fallback_severity = vim.diagnostic.severity.WARN,
+  default_timeout = 60000,
+  diagnostics_format = '[#{c}] #{m}',
+  sources = {
+    null_ls.builtins.code_actions.eslint_d,
+    null_ls.builtins.diagnostics.eslint_d.with({
+      -- extra_filetypes = { 'json' },
+    }),
+    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.formatting.prettierd.with({
+      env = {
+        PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
+      },
+    }),
+    null_ls.builtins.formatting.stylua,
+    null_ls.builtins.diagnostics.codespell,
+  },
+}
 
--- how to disable sources?
-if config_opts.default_cosmic_sources then
-    config_opts.sources = u.merge_list({
-        null_ls.builtins.code_actions.eslint_d,
-        null_ls.builtins.diagnostics.eslint_d,
-        null_ls.builtins.formatting.eslint_d,
-        null_ls.builtins.diagnostics.markdownlint,
-        null_ls.builtins.formatting.prettierd.with({
-            env = {
-                PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-            },
-        }),
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.code_actions.gitsigns,
-    }, config_opts.sources or {})
-end
-
-require('null-ls').setup(u.merge(
-    defaults,
-    {
-        sources = vim.tbl_map(function(source)
-            return source.with({
-                diagnostics_postprocess = function(diagnostic)
-                    if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                        diagnostic.severity = vim.diagnostic.severity.WARN
-                    end
-                end,
-            })
-        end, config_opts.sources),
-    }
-))
+require('null-ls').setup(u.merge(defaults, options))

@@ -1,449 +1,106 @@
-local icons = require('theme.icons')
-local null_ls = require('null-ls')
-
 local config = {
-    -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
-    auto_session = {
-        auto_session_enabled = true,
-        auto_save_enabled = true,
-        auto_restore_enabled = true,
-        auto_session_suppress_dirs = { '~/', '~/Projects' },
+  -- See https://github.com/rmagatti/auto-session#%EF%B8%8F-configuration
+  auto_session = {
+    auto_session_enabled = true,
+    auto_save_enabled = true,
+    auto_restore_enabled = true,
+    auto_session_suppress_dirs = { '~/', '~/Projects' },
+  },
+  -- See :h nvim_open_win for possible border options
+  border = 'rounded',
+  max_width = '100',
+  -- https://github.com/numToStr/Comment.nvim#configuration-optional
+  -- comment_nvim = {},
+  -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
+  -- cosmic_ui = {},
+  -- See :h vim.diagnostic.config for all diagnostic configuration options
+  diagnostic = {
+    virtual_text = false,
+  },
+  -- See :h gitsigns-usage
+  -- gitsigns = {},
+  -- LSP settings
+  lsp = {
+    -- True/false or table of filetypes {'.ts', '.js',}
+    format_on_save = { '*.ts', '*.json', '*.js', '*.cjs', '*.vue', '*.html', '*.lua', '*.md', '*.toml' },
+    -- Time in MS before format timeout
+    format_timeout = 3000,
+    -- Set to false to disable rename notification
+    rename_notification = true,
+    -- Enable non-default servers, use default lsp config
+    -- Check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
+    servers = {
+      rust_analyzer = false,
+      jsonls = {
+        format = false,
+      },
+      pyright = true,
+      sumneko_lua = {
+        format = false,
+      },
+      html = {
+        format = false,
+      },
+      volar = {
+        format = false,
+        opts = {},
+      },
+      -- Enable tsserver w/custom settings
+      tsserver = {
+        format = false,
+        opts = {
+          on_attach = function(client, bufnr) end,
+          flags = {
+            debounce_text_changes = 150,
+          },
+        },
+      },
     },
-    -- See :h nvim_open_win for possible border options
-    border = { '', '', ' ', ' ', '', '', ' ', ' ' },
-    max_width = '100',
-    -- https://github.com/numToStr/Comment.nvim#configuration-optional
-    -- comment_nvim = {},
-    -- See https://github.com/CosmicNvim/cosmic-ui#%EF%B8%8F-configuration
-    -- cosmic_ui = {},
-    -- See :h vim.diagnostic.config for all diagnostic configuration options
-    diagnostic = {
-        virtual_text = false,
+    -- See Cosmic defaults lsp/providers/tsserver.lua
+    -- ts_utils = {},
+  },
+  -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
+  -- lsp_signature = {},
+  -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
+  -- luasnip = {},
+  -- Default statusline icon
+  statusline = {
+    main_icon = '🐱',
+  },
+  -- See :h telescope.setup
+  -- telescope = {},
+  theme = 'github',
+  theme_options = {
+    dev = true,
+    overrides = function(c)
+      return {
+        FloatBorder = { bg = c.red },
+        InclineNormal = { bg = c.bg },
+      }
+    end,
+    theme_style = 'light',
+    keyword_style = 'italic',
+    function_style = 'none',
+    variable_style = 'none',
+    dark_float = false,
+    dark_sidebar = true,
+  },
+  -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
+  -- todo_comments = {},
+  -- See :h nvim-treesitter-quickstart
+  -- treesitter = {},
+  -- See :h notify.setup
+  -- notify = {},
+  -- See :h cmp-usage
+  nvim_cmp = {
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'luasnip' },
+      { name = 'buffer', max_item_count = 5 },
+      { name = 'path' },
     },
-    -- See :h gitsigns-usage
-    -- gitsigns = {},
-    -- LSP settings
-    lsp = {
-        -- True/false or table of filetypes {'.ts', '.js',}
-        format_on_save = { '*.ts', '*.json', '*.js', '*.vue', '*.html', '*.lua', '*.md' },
-        -- Time in MS before format timeout
-        format_timeout = 3000,
-        -- Set to false to disable rename notification
-        rename_notification = true,
-        -- Enable non-default servers, use default lsp config
-        -- Check here for configs that will be used by default: https://github.com/williamboman/nvim-lsp-installer/tree/main/lua/nvim-lsp-installer/servers
-        servers = {
-            -- Enable rust_analyzer
-            rust_analyzer = false,
-
-            -- Enable tsserver w/custom settings
-            tsserver = {
-                -- Disable formatting (defaults to true)
-                format = true,
-                -- OR add/override server options
-                opts = {
-                    on_attach = function(client, bufnr) end,
-                    flags = {
-                        debounce_text_changes = 150,
-                    },
-                },
-            },
-            -- See Cosmic defaults lsp/providers/null_ls.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
-            -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
-            null_ls = {
-                default_cosmic_sources = false,
-                fallback_severity = vim.diagnostic.severity.WARN,
-                default_timeout = 60000,
-                diagnostics_format = '[#{c}] #{m}',
-                sources = {
-                    null_ls.builtins.code_actions.eslint_d,
-                    null_ls.builtins.diagnostics.eslint_d.with({
-                        extra_filetypes = { 'json' },
-                    }),
-                    null_ls.builtins.diagnostics.markdownlint,
-                    null_ls.builtins.formatting.prettierd.with({
-                        env = {
-                            PRETTIERD_LOCAL_PRETTIER_ONLY = 1,
-                        },
-                    }),
-                    null_ls.builtins.formatting.stylua,
-                    -- null_ls.builtins.code_actions.gitsigns,
-                    null_ls.builtins.diagnostics.codespell,
-                },
-            },
-        },
-        -- See Cosmic defaults lsp/providers/tsserver.lua
-        -- ts_utils = {},
-    },
-    -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
-    -- lsp_signature = {},
-    -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
-    -- luasnip = {},
-    -- Default statusline icon
-    statusline = {
-        main_icon = '🐱',
-    },
-    -- See :h telescope.setup
-    -- telescope = {},
-    theme = 'github',
-    theme_options = {
-        dev = true,
-        overrides = function(c)
-            return {
-                FloatBorder = { bg = c.red },
-            }
-        end,
-        theme_style = 'light',
-        keyword_style = 'italic',
-        function_style = 'none',
-        variable_style = 'none',
-        dark_float = true,
-        dark_sidebar = true,
-    },
-    -- See https://github.com/folke/todo-comments.nvim#%EF%B8%8F-configuration
-    -- todo_comments = {},
-    -- See :h nvim-treesitter-quickstart
-    -- treesitter = {},
-    -- See :h notify.setup
-    -- notify = {},
-    -- See :h cmp-usage
-    nvim_cmp = {
-        sources = {
-            { name = 'nvim_lsp' },
-            { name = 'nvim_lua' },
-            { name = 'luasnip' },
-            { name = 'buffer', max_item_count = 5 },
-            { name = 'path' },
-        },
-    },
-    nvim_tree = {
-        disable_netrw = true,
-        hijack_netrw = true,
-        hijack_cursor = true,
-        hijack_unnamed_buffer_when_opening = false,
-        open_on_setup = true,
-        open_on_setup_file = true,
-        open_on_tab = true,
-        respect_buf_cwd = true,
-        update_cwd = true,
-        diagnostics = {
-            enable = false,
-        },
-        ignore_ft_on_setup = {
-            'startify',
-            'dashboard',
-            'alpha',
-        },
-        filters = {
-            dotfiles = false,
-            custom = { '^\\.git$' },
-        },
-        update_focused_file = {
-            enable = true,
-        },
-        view = {
-            width = 45,
-            number = false,
-            relativenumber = false,
-            hide_root_folder = true,
-        },
-        git = {
-            enable = true,
-            ignore = true,
-            timeout = 500,
-        },
-        renderer = {
-            highlight_git = true,
-            special_files = {},
-            icons = {
-                glyphs = {
-                    default = '',
-                    symlink = icons.symlink,
-                    git = icons.git,
-                    folder = icons.folder,
-                },
-            },
-            indent_markers = {
-                enable = true,
-                icons = {
-                    corner = '└ ',
-                    edge = '│ ',
-                    item = '│ ',
-                    none = '  ',
-                },
-            },
-        },
-    },
-    -- Add additional plugins
-    add_plugins = {
-        {
-            '~/Projects/bufferline.nvim',
-            tag = 'v2.*',
-            requires = { 'kyazdani42/nvim-web-devicons' },
-            config = function()
-                require('bufferline').setup({
-                    options = {
-                        numbers = 'ordinal',
-                        diagnostics_pure = true,
-                        diagnostics_indicator = function(count, level)
-                            if level == 'error' then
-                                return ' '
-                            end
-                        end,
-                        offsets = {
-                            { filetype = 'Trouble' },
-                            {
-                                filetype = 'NvimTree',
-                                text = 'פּ File Explorer',
-                                highlight = 'BufferLineFill',
-                                text_align = 'left',
-                            },
-                        },
-                        modified_icon = '',
-                        indicator_icon = false,
-                        show_buffer_close_icons = false,
-                        show_close_icon = false,
-                        show_tab_indicators = false,
-                        max_name_length = 30,
-                        tab_size = 8,
-                        diagnostics = 'nvim_lsp',
-                    },
-                    highlights = {
-                        buffer_selected = {
-                            gui = 'none',
-                        },
-                        diagnostic_selected = {
-                            gui = 'none',
-                        },
-                        info_selected = {
-                            gui = 'none',
-                        },
-                        info_diagnostic_selected = {
-                            gui = 'none',
-                        },
-                        warning_selected = {
-                            gui = 'none',
-                        },
-                        warning_diagnostic_selected = {
-                            gui = 'none',
-                        },
-                        error = {
-                            gui = 'undercurl',
-                        },
-                        error_selected = {
-                            gui = 'undercurl',
-                        },
-                        error_diagnostic_selected = {
-                            gui = 'none',
-                        },
-                        duplicate_selected = {
-                            gui = 'bold',
-                        },
-                        duplicate_visible = {
-                            gui = 'bold',
-                        },
-                        duplicate = {
-                            gui = 'bold',
-                        },
-                        pick_selected = {
-                            gui = 'none',
-                        },
-                        pick_visible = {
-                            gui = 'none',
-                        },
-                        pick = {
-                            gui = 'none',
-                        },
-                        numbers_selected = {
-                            gui = 'none',
-                        },
-                    },
-                })
-            end,
-        },
-        {
-            'lukas-reineke/indent-blankline.nvim',
-            config = function()
-                vim.cmd([[highlight IndentBlanklineIndent1 guibg=#f5ffff gui=nocombine]])
-                vim.cmd([[highlight IndentBlanklineIndent2 guibg=#fff5ff gui=nocombine]])
-                vim.cmd([[highlight IndentBlanklineIndent3 guibg=#fffff5 gui=nocombine]])
-                vim.cmd([[highlight IndentBlanklineIndent4 guibg=#fff5f5 gui=nocombine]])
-                vim.cmd([[highlight IndentBlanklineIndent5 guibg=#f5f5ff gui=nocombine]])
-                require('indent_blankline').setup({
-                    char = '',
-                    char_highlight_list = {
-                        'IndentBlanklineIndent1',
-                        'IndentBlanklineIndent2',
-                        'IndentBlanklineIndent3',
-                        'IndentBlanklineIndent4',
-                        'IndentBlanklineIndent5',
-                    },
-                    space_char_highlight_list = {
-                        'IndentBlanklineIndent1',
-                        'IndentBlanklineIndent2',
-                        'IndentBlanklineIndent3',
-                        'IndentBlanklineIndent4',
-                        'IndentBlanklineIndent5',
-                    },
-                    context_char = '│',
-                    show_trailing_blankline_indent = false,
-                    space_char_blankline = ' ',
-                    show_current_context = true,
-                    show_current_context_start = true,
-                })
-            end,
-        },
-        'takac/vim-hardtime',
-        'ggandor/lightspeed.nvim',
-        'wakatime/vim-wakatime',
-        'github/copilot.vim',
-        {
-            'yamatsum/nvim-nonicons',
-            requires = { 'kyazdani42/nvim-web-devicons' },
-        },
-        {
-            'mfussenegger/nvim-dap',
-            config = function()
-                require('dap')
-            end,
-        },
-        {
-            'theHamsta/nvim-dap-virtual-text',
-            config = function()
-                require('nvim-dap-virtual-text').setup({
-                    all_frames = true,
-                    commented = true,
-                    highlight_changed_variables = true,
-                    highlight_new_as_changed = true,
-                })
-            end,
-        },
-        {
-            'rcarriga/nvim-dap-ui',
-            requires = { 'mfussenegger/nvim-dap' },
-            config = function()
-                require('dapui').setup()
-            end,
-        },
-        { 'microsoft/vscode-js-debug', opt = true, run = 'npm install && npm run-script compile' },
-        {
-            'vim-test/vim-test',
-            requires = {
-                { 'tpope/vim-dispatch' },
-            },
-        },
-        {
-            'rcarriga/vim-ultest',
-            run = ':UpdateRemotePlugins',
-            config = function()
-                require('ultest').setup({
-                    builders = {
-                        ['typescript'] = require('dap.dap-js').ultest,
-                    },
-                })
-            end,
-        },
-        -- {
-        --   'nvim-neotest/neotest',
-        --   requires = {
-        --     'nvim-lua/plenary.nvim',
-        --     'nvim-treesitter/nvim-treesitter',
-        --     'antoinemadec/FixCursorHold.nvim',
-        --   },
-        -- },
-        {
-            'b0o/incline.nvim',
-            config = function()
-                require('incline').setup()
-            end,
-        },
-        {
-            'segeljakt/vim-silicon',
-            cmd = 'Silicon',
-            config = function()
-                vim.g.silicon['output'] = '~/Pictures/code/silicon-{time:%Y-%m-%d-%H%M%S}.png'
-            end,
-        },
-        {
-            'folke/trouble.nvim',
-            requires = 'kyazdani42/nvim-web-devicons',
-            config = function()
-                require('trouble').setup({
-                    auto_preview = false,
-                })
-            end,
-        },
-        {
-            'folke/which-key.nvim',
-            config = function()
-                require('which-key').setup({
-                    hidden = { '<silent>', '<cmd>', '<Cmd>', '<CR>', 'call', 'lua', '^:', '^ ' },
-                })
-            end,
-        },
-        {
-            'j-hui/fidget.nvim',
-            config = function()
-                require('fidget').setup({
-
-                    text = {
-                        spinner = 'pipe', -- animation shown when tasks are ongoing
-                        done = '✔', -- character shown when all tasks are complete
-                        commenced = 'Started', -- message shown when task starts
-                        completed = 'Completed', -- message shown when task completes
-                    },
-                    align = {
-                        bottom = true, -- align fidgets along bottom edge of buffer
-                        right = true, -- align fidgets along right edge of buffer
-                    },
-                    timer = {
-                        spinner_rate = 125, -- frame rate of spinner animation, in ms
-                        fidget_decay = 2000, -- how long to keep around empty fidget, in ms
-                        task_decay = 1000, -- how long to keep around completed task, in ms
-                    },
-                    window = {
-                        relative = 'win', -- where to anchor, either "win" or "editor"
-                        blend = 100, -- &winblend for the window
-                        zindex = nil, -- the zindex value for the window
-                    },
-                    fmt = {
-                        leftpad = true, -- right-justify text in fidget box
-                        stack_upwards = true, -- list of tasks grows upwards
-                        max_width = 0, -- maximum width of the fidget box
-                        -- function to format fidget title
-                        fidget = function(fidget_name, spinner)
-                            return string.format('%s %s', spinner, fidget_name)
-                        end,
-                        -- function to format each task line
-                        task = function(task_name, message, percentage)
-                            return string.format(
-                                '%s%s [%s]',
-                                message,
-                                percentage and string.format(' (%s%%)', percentage) or '',
-                                task_name
-                            )
-                        end,
-                    },
-                    sources = { -- Sources to configure
-                        ['null-ls'] = {
-                            ignore = true,
-                        },
-                    },
-                    debug = {
-                        logging = true, -- whether to enable logging, for debugging
-                        strict = false, -- whether to interpret LSP strictly
-                    },
-                })
-            end,
-        },
-        {
-            'kosayoda/nvim-lightbulb',
-            requires = 'antoinemadec/FixCursorHold.nvim',
-            config = function()
-                require('nvim-lightbulb').setup({ autocmd = { enabled = true }, ignore = { 'null-ls' } })
-            end,
-        },
-    },
+  },
 }
 
 return config

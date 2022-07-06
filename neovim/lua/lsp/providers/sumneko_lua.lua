@@ -14,6 +14,9 @@ return {
                 },
                 maxPreload = 10000,
             },
+            format = {
+                enable = false,
+            },
         },
     },
 }

@@ -5,8 +5,9 @@ local o = vim.opt
 local cmd = vim.cmd
 local opts = { noremap = true, silent = true }
 
-local indent = 4
+local indent = 2
 g.mapleader = ' '
+g.ultest_deprecation_notice = 0
 
 -- plugins
 g.hardtime_default_on = true
@@ -20,7 +21,7 @@ opt.encoding = 'utf-8'
 opt.matchpairs = { '(:)', '{:}', '[:]', '<:>' }
 opt.syntax = 'enable'
 
--- indention
+-- indentation
 opt.cmdheight = 0
 opt.pumheight = 7
 opt.autoindent = true
@@ -39,7 +40,7 @@ opt.wildignore = opt.wildignore + { '*/node_modules/*', '*/.git/*', '*/vendor/*'
 opt.wildmenu = true
 
 -- ui
-opt.fillchars = 'vert: ,eob: ,horiz: '
+opt.fillchars = 'eob: ,horiz: ,horizup: ,horizdown: ,vert: ,vertleft: ,vertright: ,verthoriz: '
 opt.title = true
 opt.guifont = 'JetBrains Mono:h10.5'
 opt.guifontwide = 'Symbols Nerd Font:h15'
@@ -48,12 +49,12 @@ opt.laststatus = 3
 opt.lazyredraw = true
 opt.list = false
 opt.listchars = {
-    tab = '❘-',
-    trail = '·',
-    lead = '·',
-    extends = '»',
-    precedes = '«',
-    nbsp = '×',
+  tab = '❘-',
+  trail = '·',
+  lead = '·',
+  extends = '»',
+  precedes = '«',
+  nbsp = '×',
 }
 opt.mouse = 'a'
 opt.number = true
@@ -73,7 +74,7 @@ opt.writebackup = false
 
 -- autocomplete
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
--- opt.shortmess = opt.shortmess + { c = true }
+opt.shortmess = opt.shortmess + { c = true }
 
 -- perfomance
 opt.redrawtime = 1500
@@ -90,6 +91,8 @@ cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", t
 cmd('highlight FloatBorder guibg=red')
 -- fix diagnostic color on galaxyine
 cmd('colorscheme github_light')
+cmd('autocmd TextChanged,FocusLost,BufEnter,InsertLeave * silent update')
+
 -- Common
 map('n', '<leader><leader>hs', ':nohlsearch<cr>')
 map('n', '<leader><leader>e', ':e ~/.config/nvim/lua/config/editor.lua<cr>', opts)
@@ -147,3 +150,5 @@ map('n', '<Leader>dbt', ":lua require('dap').toggle_breakpoint()<CR>")
 
 map('n', '<Leader>dc', ":lua require('dap.ui.variables').scopes()<CR>")
 map('n', '<Leader>di', ":lua require('dapui').toggle()<CR>")
+
+vim.cmd([[highlight IndentBlanklineContextChar guibg=white guifg=#00b0ff gui=nocombine]])
