@@ -4,7 +4,7 @@ set mouse=a
 " Set Editor Font
 if exists(':GuiFont')
     " Use GuiFont! to ignore font errors
-    GuiLinespace 8
+    " GuiLinespace 10
     GuiRenderLigatures 1
 endif
 

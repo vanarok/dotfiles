@@ -2,4 +2,5 @@
 
 ## Future feature
 
-- [x] add zsh conf
+- [ ] add zsh conf
+- [x] add sway,waybar,wofi configs

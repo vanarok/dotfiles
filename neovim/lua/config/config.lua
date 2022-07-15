@@ -72,12 +72,6 @@ local config = {
   theme = 'github',
   theme_options = {
     dev = true,
-    overrides = function(c)
-      return {
-        FloatBorder = { bg = c.red },
-        InclineNormal = { bg = c.bg },
-      }
-    end,
     theme_style = 'light',
     keyword_style = 'italic',
     function_style = 'none',

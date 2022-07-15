@@ -1,0 +1,34 @@
+### Output configuration
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+#
+# Wacom Tablet - Example
+#   input "1386:884:Wacom_Intuos_S_Pad" map_to_output HDMI-A-1
+#   input "1386:884:Wacom_Intuos_S_Pen" map_to_output HDMI-A-1
+# xwayland disable
+# xwayland scale 1
+# exec xsettingsd
+output eDP-1 scale 1.5
+output HDMI-A-1 scale 1
+output HDMI-A-1 resolution 1920x1080 position 1280,0
+output eDP-1 resolution 1920x1080 position 0,580
+
+# Define outputs
+set $output-primary HDMI-A-1
+set $output-secondary eDP-1
+
+# workspace to displays
+workspace 1 output $output-primary
+workspace 2 output $output-primary
+workspace 3 output $output-primary
+workspace 4 output $output-primary
+workspace 5 output $output-primary
+workspace 6 output $output-primary
+
+workspace 7 output $output-secondary
+workspace 8 output $output-secondary
+workspace 9 output $output-secondary

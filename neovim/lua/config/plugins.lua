@@ -22,21 +22,6 @@ return {
     after = user_config.theme,
   },
   {
-    'kyazdani42/nvim-tree.lua',
-    config = function()
-      require('plugins.nvim-tree')
-    end,
-    cmd = {
-      'NvimTreeClipboard',
-      'NvimTreeClose',
-      'NvimTreeFindFile',
-      'NvimTreeOpen',
-      'NvimTreeRefresh',
-      'NvimTreeToggle',
-    },
-    event = 'VimEnter',
-  },
-  {
     'CosmicNvim/cosmic-ui',
     requires = {
       'MunifTanjim/nui.nvim',
@@ -118,14 +103,6 @@ return {
     end,
   },
   {
-    'voldikss/vim-floaterm',
-    opt = true,
-    event = 'BufWinEnter',
-    config = function()
-      require('plugins.terminal')
-    end,
-  },
-  {
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/popup.nvim',
@@ -189,28 +166,14 @@ return {
     end,
   },
   {
-    '~/Projects/bufferline.nvim',
+    'akinsho/bufferline.nvim',
     tag = 'v2.*',
     requires = { 'kyazdani42/nvim-web-devicons' },
     config = function()
       require('bufferline').setup({
         options = {
-          numbers = 'ordinal',
-          diagnostics_pure = true,
-          diagnostics_indicator = function(count, level)
-            if level == 'error' then
-              return ' '
-            end
-          end,
-          offsets = {
-            { filetype = 'Trouble' },
-            {
-              filetype = 'NvimTree',
-              text = 'פּ File Explorer',
-              highlight = 'BufferLineFill',
-              text_align = 'left',
-            },
-          },
+          numbers = 'none',
+          diagnostics_indicator = false,
           modified_icon = '',
           indicator_icon = false,
           show_buffer_close_icons = false,
@@ -261,10 +224,10 @@ return {
             gui = 'none',
           },
           pick_visible = {
-            gui = 'none',
+            gui = 'bold',
           },
           pick = {
-            gui = 'none',
+            gui = 'bold',
           },
           numbers_selected = {
             gui = 'none',
@@ -276,30 +239,9 @@ return {
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      vim.cmd([[highlight IndentBlanklineContextChar guibg=white]])
-      vim.cmd([[highlight IndentBlanklineIndent1 guibg=#f5ffff gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent2 guibg=#fff5ff gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent3 guibg=#fffff5 gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent4 guibg=#fff5f5 gui=nocombine]])
-      vim.cmd([[highlight IndentBlanklineIndent5 guibg=#f5f5ff gui=nocombine]])
       require('indent_blankline').setup({
-        char = '',
-        char_highlight_list = {
-          'IndentBlanklineIndent1',
-          'IndentBlanklineIndent2',
-          'IndentBlanklineIndent3',
-          'IndentBlanklineIndent4',
-          'IndentBlanklineIndent5',
-        },
-        space_char_highlight_list = {
-          'IndentBlanklineIndent1',
-          'IndentBlanklineIndent2',
-          'IndentBlanklineIndent3',
-          'IndentBlanklineIndent4',
-          'IndentBlanklineIndent5',
-        },
-        context_char = '│',
-        show_trailing_blankline_indent = false,
+        char = '▏',
+        context_char = '▏',
         space_char_blankline = ' ',
         show_current_context = true,
         show_current_context_start = true,
@@ -454,6 +396,14 @@ return {
     requires = 'antoinemadec/FixCursorHold.nvim',
     config = function()
       require('nvim-lightbulb').setup({ autocmd = { enabled = true }, ignore = { 'null-ls' } })
+    end,
+  },
+  {
+    'kylechui/nvim-surround',
+    config = function()
+      require('nvim-surround').setup({
+        -- Configuration here, or leave empty to use defaults
+      })
     end,
   },
 }

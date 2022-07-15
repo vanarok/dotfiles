@@ -1,0 +1,28 @@
+exec_always ~/.config/sway/scripts/import-gsettings
+
+gaps inner 0
+gaps outer 0
+
+default_border none
+default_floating_border none
+font pango:monospace 0
+titlebar_padding 1
+titlebar_border_thickness 0
+smart_borders on
+
+exec_always swaybg -i ~/Pictures/background.jpg
+
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+# class                 border    bground   text    indicator child_border
+client.focused          #D6CCFFCC #D6CCFFCC #000000 #2979FF   #FF0099
+client.focused_inactive #D2D8E8f2 #D2D8E8f2 #F8F8F2 #44475A   #D2D8E8f2
+client.unfocused        #989DABcc #F8F7FACC #000000 #282A36   #F8F7FACC
+client.urgent           #44475A   #FF5555   #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36   #282A36   #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
+
+bar {
+    swaybar_command waybar
+}

@@ -42,9 +42,10 @@ opt.wildmenu = true
 -- ui
 opt.fillchars = 'eob: ,horiz: ,horizup: ,horizdown: ,vert: ,vertleft: ,vertright: ,verthoriz: '
 opt.title = true
-opt.guifont = 'JetBrains Mono:h10.5'
+-- opt.guifont = 'JetBrains Mono Light,Symbols Nerd Font:h12'
+opt.guifont = 'JetBrains Mono:h13'
 opt.guifontwide = 'Symbols Nerd Font:h15'
-opt.cursorline = true
+opt.cursorline = false
 opt.laststatus = 3
 opt.lazyredraw = true
 opt.list = false
@@ -79,19 +80,11 @@ opt.shortmess = opt.shortmess + { c = true }
 -- perfomance
 opt.redrawtime = 1500
 opt.timeoutlen = 500
-opt.ttimeoutlen = 10
-opt.updatetime = 100
-
--- theme
-opt.termguicolors = true
--- o.background = 'light'
-
-cmd('filetype plugin indent on')
-cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="IncSearch", timeout=150}')
+cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="StatusLine", timeout=300}')
 cmd('highlight FloatBorder guibg=red')
 -- fix diagnostic color on galaxyine
 cmd('colorscheme github_light')
-cmd('autocmd TextChanged,FocusLost,BufEnter,InsertLeave * silent update')
+cmd('autocmd TextChanged,FocusLost,BufEnter,InsertLeave * silent! update')
 
 -- Common
 map('n', '<leader><leader>hs', ':nohlsearch<cr>')
@@ -118,16 +111,6 @@ map('n', 'gp', ':BufferLinePick<CR>', opts)
 map('n', 'gx', ':BufferLinePickClose<CR>', opts)
 map('n', '<A-c>', ':BufferLineCloseLeft<CR>', opts)
 map('n', '<A-w>', ':BufferLineCloseRight<CR>', opts)
-map('n', '<A-1>', ':BufferLineGoToBuffer 1<CR>', opts)
-map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
-map('n', '<A-2>', ':BufferLineGoToBuffer 2<CR>', opts)
-map('n', '<A-3>', ':BufferLineGoToBuffer 3<CR>', opts)
-map('n', '<A-4>', ':BufferLineGoToBuffer 4<CR>', opts)
-map('n', '<A-5>', ':BufferLineGoToBuffer 5<CR>', opts)
-map('n', '<A-6>', ':BufferLineGoToBuffer 6<CR>', opts)
-map('n', '<A-7>', ':BufferLineGoToBuffer 7<CR>', opts)
-map('n', '<A-8>', ':BufferLineGoToBuffer 8<CR>', opts)
-map('n', '<A-9>', ':BufferLineGoToBuffer 9<CR>', opts)
 
 -- Debug
 map('n', '<Leader>dsc', ":lua require('dap').continue()<CR>")
@@ -152,3 +135,4 @@ map('n', '<Leader>dc', ":lua require('dap.ui.variables').scopes()<CR>")
 map('n', '<Leader>di', ":lua require('dapui').toggle()<CR>")
 
 vim.cmd([[highlight IndentBlanklineContextChar guibg=white guifg=#00b0ff gui=nocombine]])
+vim.cmd([[highlight IndentBlanklineContextStart gui=underline guisp=#00b0ff]])

@@ -1,0 +1,7 @@
+hide_search=true
+hide_scroll=true
+show=dmenu
+width=100
+lines=5
+display_generic=true
+location=left

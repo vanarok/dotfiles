@@ -1,0 +1,153 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 18,
+    "width": 0,
+    "modules-left": [
+        "sway/mode",
+        "backlight#icon",
+        "backlight#value",
+        "cpu",
+        "memory",
+        "disk",
+        "network",
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "sway/workspaces",
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "sway/language",
+        "keyboard-state",
+        "clock",
+        "battery",
+        "tray",
+    ],
+
+    // Modules
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "battery": {
+        "interval": 5,
+        "full-at": "80",
+        "states": {
+            "good": 70,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{time} {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "ﮣ",
+        "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "clock": {
+        "interval": 15,
+        "format": "{:%e %a %H:%M}",
+    },
+    "cpu": {
+        "interval": 15,
+        "format": " {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+    },
+    "memory": {
+        "interval": 15,
+        "format": " {}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+    "network": {
+        "interval": 15,
+        "format-wifi": "  {essid} ({signalStrength}%)",
+        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠  Disconnected",
+    },
+    "network#vpn": {
+        "interface": "tun0",
+        "format": "  {essid} ({signalStrength}%)",
+        "format-disconnected": "⚠  Disconnected",
+    },
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup": false,
+        "all-outputs": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+        }
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
+        "format-muted": "婢 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "וֹ",
+            "headset": "  ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                ""
+            ]
+        },
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10,
+    },
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": [
+            "盛"
+        ],
+    },
+    "backlight#value": {
+        "format": "{percent}%",
+    },
+    "disk": {
+        "interval": 60,
+        "format": " {free}",
+        "path": "/"
+    },
+    "sway/language": {
+        "format": "{shortDescription}",
+    },
+    "keyboard-state": {
+        "capslock": true,
+        "format": "{icon}",
+        "format-icons": {
+            "locked": "בּ",
+            "unlocked": "בּ"
+        }
+    }
+}

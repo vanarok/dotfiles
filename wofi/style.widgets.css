@@ -1,0 +1,43 @@
+/*
+Arc-Dark Color Scheme
+*/
+
+@define-color highlight rgba(214, 204, 255, 0.20) ;
+@define-color base rgba(113,79,184, 0.80) ; 
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#window {
+    background-color: @base;
+    font-family: "Noto Sans Display", "Symbols Nerd Font";
+    font-size: 12px;
+    text-shadow: 1px 1px 4px #66D6FB;
+    color: #7BDBFB;
+    border-radius: 3px;
+    font-size: 20pt
+
+}
+
+#inner-box {
+}
+
+#outer-box {
+    margin: -30px 4px 0 4px;
+}
+
+#text {
+    padding: 10px;
+}
+
+#entry {
+}
+
+#entry:selected {
+    background-color: @highlight;
+}

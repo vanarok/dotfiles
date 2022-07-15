@@ -1,0 +1,183 @@
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+    background-color: rgba(255, 255, 255, 0.4);
+    font-family: "JetBrains Mono ExtraLight", "Symbols Nerd Font";
+    font-size: 14px;
+    color: black;
+}
+
+/* Every modules */
+#battery,
+#clock,
+#backlight,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#idle_inhibitor,
+#disk,
+#keyboard-state,
+#language,
+#language {
+    padding: 1px 0.5rem;
+    margin: -99px 0;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: orange;
+}
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#mode {
+    background: rgba(214, 204, 255, 0.20);
+    border-bottom: 3px transparent;
+    color: white;
+    margin-left: 5px;
+    padding: 0;
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+    color: rgba(214, 204, 255, 0.20);
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#window {
+    font-weight: bold;
+}
+
+#workspaces {
+    font-size: 13px;
+}
+
+#workspaces button {
+    padding-right: 3px;
+    padding-left: 3px;
+    color: #0366D6;
+}
+
+#workspaces button.focused {
+    color: white;
+    background-color: #0366D6;
+}
+
+#workspaces button.urgent {
+    border-color: #c9545d;
+    color: #c9545d;
+}
+
+#backlight.icon {
+    font-size: 12px;
+    padding-right: 0
+}
+
+#language {
+}
+
+#tray {
+    text-shadow: none;
+}
+
+#keyboard-state {
+}
+
+#keyboard-state label{
+    font-weight: normal;
+    font-size: 14px;
+}
+#keyboard-state label.locked{
+    color: orangered;
+}
