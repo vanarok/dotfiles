@@ -6,7 +6,7 @@ gaps outer 0
 default_border none
 default_floating_border none
 font pango:monospace 0
-titlebar_padding 1
+titlebar_padding 3
 titlebar_border_thickness 0
 smart_borders on
 
@@ -25,4 +25,5 @@ client.background       #F8F8F2
 
 bar {
     swaybar_command waybar
+    mode hide
 }

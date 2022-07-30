@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+alias sudo='sudo '
+alias v=nvim
+alias sv='sudo -e '
+alias gv='neovide --multigrid'
+alias vi=v
+alias vim=v
+alias n=nnn
+alias rm='rm -i'
+alias mkdir='mkdir -pv'
+alias ssh='kitty +kitten ssh'
+alias ssh-copy='ssh-copy-id -i ~/.ssh/id_rsa.pub'
+alias ssh-edit='v ~/.ssh/config'
+alias sctl='systemctl '
+alias icat="kitty +kitten icat"
+alias upwork="env TZ=Europe/Amsterdam /opt/Upwork/upwork --proxy-server=socks5://localhost:15000"
+alias tb="taskbook"
+alias g=grep
+alias ln='ln -sv'
+alias dotfiles-edit='cd ~/Dotfiles && vim'

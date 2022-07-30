@@ -1,27 +1,27 @@
 local config = require('core.user')
-local theme_colors = require('github-theme.colors').setup({
+local colors = require('github-theme.colors').setup({
     theme_style = config.theme_options.theme_style,
 })
 
-local colors = {
-    white = theme_colors.bright_white,
-    bg = theme_colors.bg,
-    bg_highlight = theme_colors.bg_highlight,
-    normal = theme_colors.blue,
-    insert = theme_colors.green,
-    command = theme_colors.bright_magenta,
-    visual = theme_colors.yellow,
-    replace = theme_colors.red,
-    diffAdd = theme_colors.git.add,
-    diffModified = theme_colors.git.change,
-    diffDeleted = theme_colors.git.delete,
-    trace = theme_colors.orange,
-    hint = theme_colors.hint,
-    info = theme_colors.info,
-    error = theme_colors.error,
-    warn = theme_colors.warning,
-    floatBorder = theme_colors.border,
-    selection_caret = theme_colors.magenta,
+local colorsOptions = {
+    white = colors.bright_white,
+    bg = colors.bg,
+    bg_highlight = colors.bg_highlight,
+    normal = colors.blue,
+    insert = colors.green,
+    command = colors.bright_magenta,
+    visual = colors.yellow,
+    replace = colors.red,
+    diffAdd = colors.git.add,
+    diffModified = colors.git.change,
+    diffDeleted = colors.git.delete,
+    trace = colors.orange,
+    hint = colors.hint,
+    info = colors.info,
+    error = colors.error,
+    warn = colors.warning,
+    floatBorder = colors.border,
+    selection_caret = colors.magenta,
 }
 
-return colors
+return colorsOptions 

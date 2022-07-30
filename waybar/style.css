@@ -31,7 +31,7 @@
 
 /* The whole bar */
 #waybar {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.9);
     font-family: "JetBrains Mono ExtraLight", "Symbols Nerd Font";
     font-size: 14px;
     color: black;

@@ -4,3 +4,4 @@
 
 - [ ] add zsh conf
 - [x] add sway,waybar,wofi configs
+- [ ] add xkb layout

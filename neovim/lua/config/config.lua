@@ -87,11 +87,14 @@ local config = {
   -- notify = {},
   -- See :h cmp-usage
   nvim_cmp = {
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
+    },
     sources = {
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'luasnip' },
-      { name = 'buffer', max_item_count = 5 },
+      { name = 'buffer', max_item_count = 7 },
       { name = 'path' },
     },
   },

@@ -8,6 +8,7 @@ local opts = { noremap = true, silent = true }
 local indent = 2
 g.mapleader = ' '
 g.ultest_deprecation_notice = 0
+g.neovide_transparency = 0.7
 
 -- plugins
 g.hardtime_default_on = true
@@ -77,20 +78,26 @@ opt.writebackup = false
 opt.completeopt = { 'menu', 'menuone', 'noselect' }
 opt.shortmess = opt.shortmess + { c = true }
 
--- perfomance
+-- performance
 opt.redrawtime = 1500
 opt.timeoutlen = 500
 cmd('au TextYankPost * silent! lua vim.highlight.on_yank {higroup="StatusLine", timeout=300}')
 cmd('highlight FloatBorder guibg=red')
+--
 -- fix diagnostic color on galaxyine
 cmd('colorscheme github_light')
 cmd('autocmd TextChanged,FocusLost,BufEnter,InsertLeave * silent! update')
 
+cmd([[highlight IndentBlanklineContextChar guibg=white guifg=#00b0ff gui=nocombine]])
+cmd([[highlight IndentBlanklineContextStart gui=underline guisp=#00b0ff]])
+cmd([[highlight CopilotSuggestion guifg=blue ctermfg=8]])
+
 -- Common
-map('n', '<leader><leader>hs', ':nohlsearch<cr>')
+map('n', '<leader>nh', ':nohlsearch<cr>')
 map('n', '<leader><leader>e', ':e ~/.config/nvim/lua/config/editor.lua<cr>', opts)
 map('n', '<leader><leader>c', ':e ~/.config/nvim/lua/config/config.lua<cr>', opts)
 map('n', '<leader><leader>k', ':e ~/.config/kitty/kitty.conf<cr>', opts)
+map('n', '<leader><leader>r', ':e [Rr][Ee][Aa][Dd][Mm][Ee].md<cr>', opts)
 map('n', '<leader>n', ':NvimTreeFocus<cr>', opts)
 
 -- Improved clipboard
@@ -133,6 +140,3 @@ map('n', '<Leader>dbt', ":lua require('dap').toggle_breakpoint()<CR>")
 
 map('n', '<Leader>dc', ":lua require('dap.ui.variables').scopes()<CR>")
 map('n', '<Leader>di', ":lua require('dapui').toggle()<CR>")
-
-vim.cmd([[highlight IndentBlanklineContextChar guibg=white guifg=#00b0ff gui=nocombine]])
-vim.cmd([[highlight IndentBlanklineContextStart gui=underline guisp=#00b0ff]])

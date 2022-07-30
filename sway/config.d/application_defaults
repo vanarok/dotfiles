@@ -1,8 +1,5 @@
 # Assign workspaces
 
-assign [class="jetbrains-webstorm"] 1
-for_window [class="jetbrains-webstorm"] focus
-
 assign [app_id="kitty"] 1
 for_window [app_id="kitty"] focus
 
@@ -15,9 +12,6 @@ for_window [class="librewolf"] focus
 assign [app_id=thunar] 3
 for_window [app_id=thunar] focus
 
-assign [app_id="org.keepassxc.KeePassXC"] 3
-for_window [app_id="org.keepassxc.KeePassXC"] layout tabbed
-
 assign [app_id="telegramdesktop"] 4
 for_window [app_id="telegramdesktop"] focus
 
@@ -27,18 +21,22 @@ for_window [app_id="thunderbird"] focus
 assign [class="Upwork" title="Upwork"] 4
 for_window [class="Upwork" title="Upwork"] focus
 
+assign [app_id="com.github.wwmm.easyeffects"] 7
+for_window [app_id="com.github.wwmm.easyeffects"] focus
+
 for_window [app_id="xed"] focus
+for_window [app_id="org.keepassxc.KeePassXC"] focus
 
 # set tabbed
+for_window [app_id="telegramdesktop"] layout tabbed
+for_window [class="Upwork" title="Messages - Upwork"] layout tabbed
 for_window [app_id="org.keepassxc.KeePassXC"] layout tabbed
-for_window [app_id="telegramdesktop"] layout tabbed 
-for_window [class="Upwork" title="Messages - Upwork"] layout tabbed 
 
 # set floating (nontiling)for apps needing it:
 for_window [class="Yad" instance="yad"] floating enable
 for_window [app_id="yad"] floating enable
-for_window [app_id="blueman-manager"] floating enable,  resize set width 40 ppt height 30 ppt
-for_window [class="Upwork" title="Upwork"] floating enable, border pixel 2, sticky enable
+for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
+for_window [class="Upwork" title="Upwork"] floating enable, sticky enable
 
 # set floating (nontiling) for special apps:
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -47,6 +45,7 @@ for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
 for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable, resize set width 60ppt height 60ppt
 
 # set floating for window roles
 for_window [window_role="pop-up"] floating enable
