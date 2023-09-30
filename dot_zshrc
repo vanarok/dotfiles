@@ -1,0 +1,57 @@
+[[ $- != *i* ]] && return
+
+[[ "$(whoami)" = "root" ]] && return
+
+PS1='%n@%m %~ $ '
+  
+[[ -z "$FUNCNEST" ]] && export FUNCNEST=100          # limits recursive functions, see 'man bash'
+
+HISTFILE=~/.histfile
+HISTSIZE=10000
+HISTORY_IGNORE='sgpt *'
+HIST_NO_STORE='sgpt *'
+SAVEHIST=10000
+
+bindkey -v
+autoload -U compinit; compinit
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+
+# Clear terminal Ctrl+l
+scroll-and-clear-screen() {
+         printf '\n%.0s' {1..$LINES}
+         zle clear-screen
+     }
+zle -N scroll-and-clear-screen
+bindkey '^l' scroll-and-clear-screen
+
+# because it's required for share_history.
+setopt append_history
+
+# import new commands from the history file also in other zsh-session
+setopt inc_append_history
+setopt share_history
+
+# save each command's beginning timestamp and the duration to the history file
+setopt extended_history
+
+# If a new command line being added to the history list duplicates an older
+# one, the older command is removed from the list
+setopt histignorealldups
+
+# Expire duplicate entries first when trimming history.
+setopt hist_expire_dups_first
+
+# Don't record an entry that was just recorded again.
+setopt hist_ignore_dups
+
+# Don't write duplicate entries in the history file.
+setopt hist_save_no_dups
+# remove command lines from the history list when the first character on the
+# line is a space
+setopt histignorespace
+
+source ~/.aliases
+
+export DIRENV_LOG_FORMAT=""
+eval "$(direnv hook zsh)"
