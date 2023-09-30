@@ -1,0 +1,33 @@
+alias ls='ls --color=auto'
+alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
+alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
+
+alias sudo='sudo '
+alias se='sudo -e '
+alias sE='sudo -E '
+
+alias rm='rm -i'
+alias mkdir='mkdir -pv'
+alias md='mkdir -pv'
+alias ln='ln -sv'
+alias sm="systemctl"
+alias st="ssha"
+
+alias gi="git"
+alias mm="hledger-ui --theme=terminal"
+alias nn="nnn"
+alias gl="glab"
+alias pn="pnpm"
+alias np="npm"
+alias ya="yarn"
+alias ac="sgpt --code "
+alias as="sgpt --shell "
+alias dc="docker-compose"
+alias dr="docker"
+
+agc() {
+  git commit -e -m "$(git ds -- ':!:*.json' | sgpt --role git_commit)"
+}
+
+alias ts="todo.sh"
+alias dp="devpod --debug"
