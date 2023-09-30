@@ -31,3 +31,4 @@ agc() {
 
 alias ts="todo.sh"
 alias dp="devpod --debug"
+alias cz="chezmoi"
