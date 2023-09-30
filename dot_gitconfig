@@ -1,0 +1,55 @@
+[safe]
+	directory = *
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gitlab.com"]
+	helper =
+	helper = !/usr/bin/glab auth git-credential
+[user]
+	name = Ivan Isekeev
+	email = ivanisekeev0@gmail.com
+[core]
+	editor = hx
+  	pager = delta
+	autocrlf = input
+	excludesFile = ~/.gitignore
+
+[interactive]
+	diffFilter = delta --color-only
+
+[init]
+	defaultBranch = main
+
+[delta]
+	navigate = true
+  	light = true
+  	side-by-side = true
+  	side-by-side = true
+  	line-numbers-left-format = ""
+  	line-numbers-right-format = "│ "
+
+[merge]
+  	conflictstyle = diff3
+
+[diff]
+  	colorMoved = default
+
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	ds = diff --staged
+	ap = add -p
+	changes = log -n1 -p --format=fuller
+	amend = commit --amend -C HEAD
+	undo = clean -f -d
+	undoci = reset HEAD~1
+	unstage = reset HEAD --
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ls = log --pretty=format:\"%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]\" --decorate --date=short
+	lg-full = log --name-status --pretty=fuller
+	ignore = update-index --assume-unchanged
+	unignore = update-index --no-assume-unchanged
+	ignored = !git ls-files -v | grep "^[[:lower:]]"
