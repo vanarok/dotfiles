@@ -1,0 +1,4 @@
+.envrc
+.gitlab-ci-local
+.ssh/known_hosts*
+.config/glab-cli/config.yml
