@@ -1,0 +1,6 @@
+{
+  "name": "git_commit",
+  "expecting": "Command",
+  "variables": null,
+  "role": "Напиши текст соблюдаюший спецификации 'Conventional commits'"
+}
