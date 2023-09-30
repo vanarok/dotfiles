@@ -111,7 +111,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-PS1='\[[01;32m\]\u\[[00m\] \[[01;34m\]\w\[[00m\]$(__git_ps1 " (%s)") $ '
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+PS1='\[[01;32m\]\u\[[00m\] \[[01;34m\]\w\[[00m\]$(parse_git_branch " (%s)") $ '
 
 if [ -d "$HOME/.bashrc.d/" ]; then
   for i in $(ls -A $HOME/.bashrc.d/); do
