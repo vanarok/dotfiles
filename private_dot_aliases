@@ -29,6 +29,7 @@ agc() {
   git commit -e -m "$(git ds -- ':!:*.json' | sgpt --role git_commit)"
 }
 
-alias ts="todo.sh"
 alias dp="devpod --debug"
 alias cz="chezmoi"
+alias te="vi ~/todo/todo.txt"
+alias ne="vi ~/notes"
