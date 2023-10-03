@@ -3,6 +3,6 @@
 pkg update -y
 pkg upgrade -y
 
-pkg install -y glab-cli helix git-delta nodejs-lts
+pkg install -y glab-cli helix git-delta python
 
-corepack enable pnpm
+pip install shell-gpt
