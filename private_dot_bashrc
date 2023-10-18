@@ -133,4 +133,5 @@ export PAGER="less"
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export NNN_TRASH=1
 export GLICOL_CLI_SAMPLES_PATH=/home/vanarok/Templates/samples
-export OPENAI_API_KEY=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
+
+source .secrects
