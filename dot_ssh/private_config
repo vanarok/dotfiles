@@ -1,0 +1,9 @@
+Host kings-palace
+	HostName 188.166.193.238
+	User root
+	ForwardAgent Yes
+
+Host chef-kitchen
+	HostName 91.186.198.163
+	User root
+	ForwardAgent Yes
