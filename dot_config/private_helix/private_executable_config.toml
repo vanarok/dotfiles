@@ -41,9 +41,10 @@ git-ignore = true
 
 [keys.normal]
 z = { r = ['commit_undo_checkpoint', 'normal_mode', ':update'] }
+C-a = ['goto_last_accessed_file']
 
 [keys.insert]
-C-e = ['commit_undo_checkpoint', 'normal_mode', ':update']
+C-c = ['commit_undo_checkpoint', 'normal_mode', ':update']
 up = "no_op"
 down = "no_op"
 left = "no_op"
