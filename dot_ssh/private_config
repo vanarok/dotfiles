@@ -1,3 +1,6 @@
+Host *
+	ServerAliveInterval 240
+	
 Host kings-palace
 	HostName 188.166.193.238
 	User root
