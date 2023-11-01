@@ -3,7 +3,12 @@ Host kings-palace
 	User root
 	ForwardAgent Yes
 
-Host chef-kitchen
-	HostName 91.186.198.163
-	User root
+Host gifs.ru
+	HostName 77.232.137.100
+	User frontend
+	ForwardAgent Yes
+	
+Host arl.kg
+	HostName 185.189.12.152
+	User app
 	ForwardAgent Yes
