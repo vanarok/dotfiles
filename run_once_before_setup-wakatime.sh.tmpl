@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+if test -v WAKATIME_API; then {
+    printf '%s\n' '[settings]' "api_key = ${WAKATIME_API}" > "$HOME/.wakatime.cfg";
+} fi
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+
+if test -v WAKATIME_API; then {
+    printf '%s\n' '[settings]' "api_key = ${WAKATIME_API}" > "$HOME/.wakatime.cfg";
+} fi
+{{ end -}}
