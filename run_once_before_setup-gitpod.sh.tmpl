@@ -2,11 +2,12 @@
 
 #!/usr/bin/env bash
 
-sudo add-apt-repository ppa:maveonair/helix-editor
-sudo apt update
-sudo apt install helix direnv
+sudo apt install direnv
 
 mkdir $HOME/.local/bin
 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir $HOME/.local/bin -f
+
+rm -rf $HOME/.local/share/.zsh-vi-mode
+git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.local/share/.zsh-vi-mode
 
 {{ end -}}

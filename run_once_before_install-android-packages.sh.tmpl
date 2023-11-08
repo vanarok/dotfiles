@@ -14,6 +14,9 @@ if [ ! -L "$HOME/ledger.beancount" ]; then
   ln -s $HOME/storage/shared/Public/ledger.beancount
 fi
 
+rm -rf $HOME/.local/share/.zsh-vi-mode
+git clone https://github.com/jeffreytse/zsh-vi-mode.git $HOME/.local/share/.zsh-vi-mode
+
 chsh -s zsh
 
 {{ end -}}

@@ -51,14 +51,12 @@ setopt hist_save_no_dups
 # line is a space
 setopt histignorespace
 
-source ~/.aliases
-
 export DIRENV_LOG_FORMAT=""
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-source $HOME/.secrets
-    
+source ~/.aliases   
+
 if [ -f "$HOME/.secrets" ]; then
     source $HOME/.secrets
 fi
