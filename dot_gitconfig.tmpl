@@ -9,9 +9,21 @@
 [credential "https://gitlab.com"]
 	helper =
 	helper = !/usr/bin/glab auth git-credential
+
+{{ if eq .chezmoi.username "gitpod" -}}
+
+[credential]
+	helper = /usr/bin/gp credential-helper
+
+{{ end -}}
+
+[push]
+	default = simple
+
 [user]
 	name = Ivan Isekeev
 	email = ivanisekeev0@gmail.com
+
 [core]
 	editor = hx
   	pager = delta
