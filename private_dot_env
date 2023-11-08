@@ -1,10 +1,10 @@
 export PNPM_HOME=$HOME/.local/share/pnpm
 export GOBIN=$HOME/.go/bin
 export CARGO_BIN=$HOME/.cargo/bin
-export LOCAL=$HOME/.local/bin
+export LOCAL_BIN=$HOME/.local/bin
 export RUBY_BIN=$HOME/.rvm/bin
 
-export PATH="$PATH:RUBY_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$LOCAL"
+export PATH="$PATH:RUBY_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$LOCAL_BIN"
 
 export EDITOR="vim"
 export VISUAL="vim"
