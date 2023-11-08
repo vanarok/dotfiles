@@ -10,6 +10,10 @@ pip install shell-gpt fava
 
 echo "y" | termux-setup-storage
 
+if [ ! -L "$HOME/ledger.beancount" ]; then
+  ln -s $HOME/storage/shared/Public/ledger.beancount
+fi
+
 chsh -s zsh
 
 {{ end -}}

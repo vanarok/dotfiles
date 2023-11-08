@@ -1,13 +1,1 @@
-export LOCAL_BIN="~/.local/bin"
-export PNPM_HOME="/home/vanarok/.local/share/pnpm"
-export GOBIN="/home/vanarok/.go/bin"
-export CARGO_BIN="/home/vanarok/.cargo/bin"
-export PATH="$LOCAL_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$PATH"
-
-export SUDO_EDITOR="hx"
-export EDITOR="hx"
-export VISUAL="hx"
-export PAGER="less"
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_TRASH=1
-export GLICOL_CLI_SAMPLES_PATH=/home/vanarok/Templates/samples
+source $HOME/.env
