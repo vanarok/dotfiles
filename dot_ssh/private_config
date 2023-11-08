@@ -1,7 +1,7 @@
 Host *
 	ServerAliveInterval 300
-     	ServerAliveCountMax 2
-     	TCPKeepAlive yes
+    ServerAliveCountMax 2
+    TCPKeepAlive yes
 	
 Host kings-palace
 	HostName 188.166.193.238
