@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.username "gitpod" -}}
+
+#!/usr/bin/env bash
+
+chsh -s zsh
+
+sudo add-apt-repository ppa:maveonair/helix-editor
+sudo apt update
+sudo apt install helix direnv starship nnn
+
+{{ end -}}

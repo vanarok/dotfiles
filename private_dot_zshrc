@@ -62,3 +62,9 @@ source $HOME/.secrets
 if [ -f "$HOME/.secrets" ]; then
     source $HOME/.secrets
 fi
+
+# Only changing the escape key to `jk` in insert mode, we still
+# keep using the default keybindings `^[` in other modes
+ZVM_VI_INSERT_ESCAPE_BINDKEY=zr
+
+source $HOME/.local/share/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
