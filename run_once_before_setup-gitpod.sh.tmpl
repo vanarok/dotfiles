@@ -1,8 +1,12 @@
 {{ if eq .chezmoi.username "gitpod" -}}
+
 #!/usr/bin/env bash
 
 sudo add-apt-repository ppa:maveonair/helix-editor
 sudo apt update
-sudo apt install helix direnv starship nnn
+sudo apt install helix direnv
+
+mkdir $HOME/.local/bin
+curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir $HOME/.local/bin -f
 
 {{ end -}}
