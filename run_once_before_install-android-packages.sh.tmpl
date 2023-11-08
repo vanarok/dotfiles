@@ -1,10 +1,13 @@
 {{ if eq .chezmoi.os "android" -}}
+
 #!/bin/sh
 
 pkg update -y
 pkg upgrade -y
 
-pkg install -y glab-cli helix git-delta python fava
+pkg install -y termux-tools glab-cli helix git-delta python direnv zsh starship
+pip install shell-gpt fava
 
-pip install shell-gpt
+chsh -s zsh
+
 {{ end -}}
