@@ -123,15 +123,5 @@ if [ -d "$HOME/.bashrc.d/" ]; then
   done
 fi
 
-export PNPM_HOME="/home/vanarok/.local/share/pnpm"
-export GOBIN="/home/vanarok/.go/bin"
-export CARGO_BIN="/home/vanarok/.cargo/bin"
-export PATH="$PATH:$HOME/.rvm/bin:~/.local/bin:$GOBIN:$CARGO_BIN:$PNPM_HOME"
-export EDITOR="vim"
-export VISUAL="vim"
-export PAGER="less"
-export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
-export NNN_TRASH=1
-export GLICOL_CLI_SAMPLES_PATH=/home/vanarok/Templates/samples
-
+source .env
 source .secrects

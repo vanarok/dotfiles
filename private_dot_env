@@ -1,0 +1,14 @@
+export PNPM_HOME=$HOME/.local/share/pnpm
+export GOBIN=$HOME/.go/bin
+export CARGO_BIN=$HOME/.cargo/bin
+export LOCAL=$HOME/.local/bin
+export RUBY_BIN=$HOME/.rvm/bin
+
+export PATH="$PATH:RUBY_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$LOCAL"
+
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less"
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
+export NNN_TRASH=1
+export GLICOL_CLI_SAMPLES_PATH=/home/vanarok/Templates/samples

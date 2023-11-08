@@ -8,6 +8,8 @@ pkg upgrade -y
 pkg install -y termux-tools glab-cli helix git-delta python direnv zsh starship nnn
 pip install shell-gpt fava
 
+echo "y" | termux-setup-storage
+
 chsh -s zsh
 
 {{ end -}}

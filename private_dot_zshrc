@@ -56,3 +56,9 @@ source ~/.aliases
 export DIRENV_LOG_FORMAT=""
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+
+source $HOME/.secrets
+    
+if [ -f "$HOME/.secrets" ]; then
+    source $HOME/.secrets
+fi
