@@ -1,5 +1,13 @@
 [safe]
 	directory = *
+	
+{{ if eq .chezmoi.username "gitpod" -}}
+
+[credential]
+	helper = /usr/bin/gp credential-helper
+
+{{ else if not (eq .chezmoi.username "gitpod") -}}
+
 [credential "https://github.com"]
 	helper =
 	helper = !/usr/bin/gh auth git-credential
@@ -9,11 +17,6 @@
 [credential "https://gitlab.com"]
 	helper =
 	helper = !/usr/bin/glab auth git-credential
-
-{{ if eq .chezmoi.username "gitpod" -}}
-
-[credential]
-	helper = /usr/bin/gp credential-helper
 
 {{ end -}}
 
