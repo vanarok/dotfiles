@@ -8,15 +8,7 @@
 
 {{ else if not (eq .chezmoi.username "gitpod") -}}
 
-[credential "https://github.com"]
-	helper =
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper =
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gitlab.com"]
-	helper =
-	helper = !/usr/bin/glab auth git-credential
+# for not gitpod
 
 {{ end -}}
 
