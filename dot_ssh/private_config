@@ -1,7 +1,7 @@
 Host *
-	ServerAliveInterval 300
-    ServerAliveCountMax 2
-    TCPKeepAlive yes
+	ServerAliveInterval 20
+   ServerAliveCountMax 2
+   TCPKeepAlive no
 	
 Host kings-palace
 	HostName 188.166.193.238
@@ -20,5 +20,9 @@ Host arl.kg
 
 Host akf-auto.ru
 	HostName 45.90.218.95
+	User root
+	ForwardAgent Yes
+Host uberlyftinspection.com
+	HostName uberlyftinspection.com
 	User root
 	ForwardAgent Yes

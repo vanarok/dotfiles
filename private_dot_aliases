@@ -23,7 +23,7 @@ alias ya="yarn"
 alias ai="sgpt"
 alias ac="sgpt --code "
 alias as="sgpt --shell "
-alias dc="docker-compose"
+alias dc="docker compose"
 alias dr="docker"
 
 agc() {
