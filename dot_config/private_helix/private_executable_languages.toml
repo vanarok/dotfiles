@@ -5,7 +5,7 @@ roots = ["package.json", "vite.config.js"]
 injection-regex = "vue"
 auto-format = true
 scope = "text.html.vue"
-language-servers = [ { name = "volar", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
@@ -49,13 +49,17 @@ documentFormatting = { defaultPrintWidth = 100 }
 [[language]]
 name = "html"
 file-types = ["html"]
-language-servers = ["efm","vscode-html-language-server"]
+language-servers = ["efm", "vscode-html-language-server"]
 auto-format = true
 
 [[language]]
 name = "json"
 file-types = ['json']
-formatter = { command = 'eslint_d', args = ["--stdin", "--fix-to-stdout", "--stdin-filename=file.json"] }
+formatter = { command = 'eslint_d', args = [
+  "--stdin",
+  "--fix-to-stdout",
+  "--stdin-filename=file.json",
+] }
 language-servers = ["vscode-json-language-server", "efm"]
 auto-format = true
 
@@ -104,7 +108,7 @@ json = [
   ] },
   { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
 ]
-yml = [
+yaml = [
   { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
     "%f(%l,%c): %tarning %m",
     "%f(%l,%c): %rror %m",
@@ -115,7 +119,7 @@ html = [{ formatCommand = "prettierd '${INPUT}'", formatStdin = true }]
 
 [[language]]
 name = "typescript"
-file-types = ['js','ts', 'cjs', 'mjs']
+file-types = ['js', 'ts', 'cjs', 'mjs']
 roots = ["package.json", "vite.config.js"]
 language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
 auto-format = true
@@ -134,3 +138,9 @@ indent = { tab-width = 2, unit = "  " }
 [language-server.taplo]
 args = ["lsp", "stdio"]
 command = "taplo"
+config = {}
+
+[[language]]
+name = "yaml"
+language-servers = ["efm"]
+auto-format = true
