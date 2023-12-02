@@ -63,3 +63,6 @@
 	ignore = update-index --assume-unchanged
 	unignore = update-index --no-assume-unchanged
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
+[credential "https://gitlab.vrt.one"]
+	helper = 
+	helper = !/data/data/com.termux/files/usr/bin/glab auth git-credential

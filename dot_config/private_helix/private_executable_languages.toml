@@ -1,26 +1,12 @@
 [[language]]
 name = "vue"
 file-types = ['vue']
-formatter = { command = 'prettier', args = ["--parser", "vue"] }
 roots = ["package.json", "vite.config.js"]
 injection-regex = "vue"
 auto-format = true
 scope = "text.html.vue"
-language-servers = [ { name = "volar", except-features = ["format"] }, "eslint"]
+language-servers = [ { name = "volar", except-features = ["format"] }, "efm"]
 indent = { tab-width = 2, unit = "  " }
-
-[language.debugger]
-name = "node"
-transport = "stdio"
-command = "/usr/bin/node"
-args = ["/home/vanarok/.local/bin/vscode-chrome-debug/out/src/chromeDebug.js"]
-quirks = { absolute-paths = true }
-
-[[language.debugger.templates]]
-name = "source"
-request = "attach"
-completion = [{ name = "main", completion = "filename", default = "index.js" }]
-args = { type = "chrome", program = "{0}", sourceMaps = true, protocol = "inspector", port = '9222', webRoot = "${workspaceFolder}" }
 
 [[grammar]]
 name = "vue"
@@ -60,79 +46,36 @@ linkedEditingRange = true
 documentSymbol = true
 documentFormatting = { defaultPrintWidth = 100 }
 
-[language-server.prettier]
-command = "efm-langserver"
-
-[language-server.prettier.config]
-documentFormatting = true
-
-[language-server.prettier.config.languages]
-vue = [{ formatCommand = "prettierd '${INPUT}'", formatStdin = true }]
-
-[language-server.eslint]
-args = ["--stdio"]
-command = "vscode-eslint-language-server"
-
-[language-server.eslint.config]
-problems = { shortenToSingleLine = false }
-format = true
-nodePath = ""
-onIgnoredFiles = "off"
-packageManager = "pnpm"
-quiet = false
-rulesCustomizations = []
-run = "onType"
-useESLintClass = false
-validate = "on"
-autoFixOnSave = true
-
-[language-server.eslint.config.experimental]
-useFlatConfig = false
-
-[language-server.eslint.config.codeAction]
-[language-server.eslint.config.codeAction.disableRuleComment]
-enable = true
-location = "separateLine"
-
-[language-server.eslint.config.codeAction.showDocumentation]
-enable = true
-
-[language-server.eslint.config.codeActionOnSave]
-enable = true
-mode = "all"
-
-[language-server.eslint.config.workingDirectory]
-mode = "auto"
-
 [[language]]
 name = "html"
-file-types = ['html']
-formatter = { command = 'prettier', args = ["--parser", "html"] }
+file-types = ["html"]
+language-servers = ["efm","vscode-html-language-server"]
 auto-format = true
 
 [[language]]
 name = "json"
-formatter = { command = 'prettier', args = ["--parser", "json"] }
+file-types = ['json']
+formatter = { command = 'eslint_d', args = ["--stdin", "--fix-to-stdout", "--stdin-filename=file.json"] }
+language-servers = ["vscode-json-language-server", "efm"]
 auto-format = true
 
 [[language]]
 name = "css"
-formatter = { command = 'prettier', args = ["--parser", "css"] }
-auto-format = true
 scope = "source.css"
 injection-regex = "css"
 file-types = ["css", "scss"]
 roots = []
-language-servers = [{ name = "stylelint" }]
+language-servers = ["efm", "vscode-css-language-server"]
 indent = { tab-width = 2, unit = "  " }
+auto-format = true
 
-[language-server.stylelint]
+[language-server.efm]
 command = "efm-langserver"
 
-[language-server.stylelint.config]
+[language-server.efm.config]
 documentFormatting = true
 
-[language-server.stylelint.config.languages]
+[language-server.efm.config.languages]
 css = [
   { lintCommand = "stylelint --stdin --stdin-filename '${INPUT}' --formatter compact", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
     '%f: line %l, col %c, %tarning - %m',
@@ -140,14 +83,41 @@ css = [
   ] },
   { formatCommand = "stylelint --fix --stdin --stdin-filename '${INPUT}'", formatStdin = true },
 ]
-
+vue = [
+  { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  ] },
+  { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
+]
+typescript = [
+  { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  ] },
+  { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
+]
+json = [
+  { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  ] },
+  { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
+]
+yml = [
+  { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  ] },
+  { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
+]
+html = [{ formatCommand = "prettierd '${INPUT}'", formatStdin = true }]
 
 [[language]]
 name = "typescript"
 file-types = ['js','ts', 'cjs', 'mjs']
 roots = ["package.json", "vite.config.js"]
-formatter = { command = 'prettier', args = ["--parser", "typescript"] }
-language-servers = [{ name = "volar", except-features = ["format"] }, "eslint"]
+language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
 auto-format = true
 
 [[language]]
@@ -158,43 +128,9 @@ file-types = ["toml"]
 roots = []
 comment-token = "#"
 auto-format = true
-language-servers = [{ name = "taplo" }]
+language-servers = ["taplo"]
 indent = { tab-width = 2, unit = "  " }
 
 [language-server.taplo]
 args = ["lsp", "stdio"]
 command = "taplo"
-
-[[language]]
-name = "nunjucks"
-scope = "text.html.nunjucks"
-injection-regex = "nunjucks"
-file-types = ["njk"]
-roots = []
-indent = { tab-width = 2, unit = "  " }
-grammar = "jinja2"
-
-[[language]]
-name = "jinja"
-scope = "text.html.jinja"
-injection-regex = "jinja"
-file-types = ["jinja", "jinja2", "j2"]
-roots = []
-indent = { tab-width = 2, unit = "  " }
-grammar = "jinja2"
-
-[[grammar]]
-name = "jinja2"
-source = { git = "https://github.com/varpeti/tree-sitter-jinja2", rev = "a533cd3c33aea6acb0f9bf9a56f35dcfe6a8eb53" }
-
-[[language]]
-name = "webc"
-scope = "text.html.webc"
-injection-regex = "webc"
-file-types = ["webc"]
-roots = []
-language-servers = [ "vscode-html-language-server" ]
-formatter = { command = 'prettier', args = ["--parser", "html"] }
-auto-format = true
-indent = { tab-width = 2, unit = "  " }
-grammar = "html"
