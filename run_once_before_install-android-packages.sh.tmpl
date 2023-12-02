@@ -9,12 +9,15 @@ pkg upgrade -y
 pkg install rust
 
 pkg install -y termux-tools glab-cli helix git-delta python direnv zsh starship nnn openssh libxml2 libxslt termux-api nodejs
+corepack enable pnpm
 pip install shell-gpt fava
 
 # web dev environmet
-corepack enable pnpm
 pnpm -g install prettier eslint eslint_d stylelint @fsouza/prettierd yaml-language-server
 cargo install taplo-cli --locked --features=lsp
+
+# linux dev environmet
+pnpm -g i bash-language-server
 
 echo "y" | termux-setup-storage
 
