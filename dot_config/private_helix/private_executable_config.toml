@@ -7,6 +7,7 @@ idle-timeout = 1
 auto-save = true
 color-modes = true
 auto-pairs = false
+shell = ["zsh", "-c"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -14,7 +15,13 @@ normal = "block"
 select = "underline"
 
 [editor.statusline]
-left = ["mode", "spinner", "file-name", "version-control","file-modification-indicator"]
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "version-control",
+  "file-modification-indicator",
+]
 right = [
   "diagnostics",
   "selections",
@@ -33,7 +40,7 @@ skip-levels = 1
 [editor.lsp]
 auto-signature-help = false
 display-messages = true
-display-inlay-hints	 = true
+display-inlay-hints = true
 
 [editor.file-picker]
 hidden = true

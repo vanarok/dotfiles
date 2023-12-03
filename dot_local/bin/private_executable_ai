@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read -r stdin
+string="$1"
+stdin | sgpt --code "$string"
