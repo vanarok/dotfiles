@@ -3,10 +3,10 @@ name = "vue"
 file-types = ['vue']
 roots = ["package.json", "vite.config.js"]
 injection-regex = "vue"
-auto-format = true
 scope = "text.html.vue"
 language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
 indent = { tab-width = 2, unit = "  " }
+auto-format = true
 
 [[grammar]]
 name = "vue"
@@ -55,12 +55,7 @@ auto-format = true
 [[language]]
 name = "json"
 file-types = ['json']
-formatter = { command = 'eslint_d', args = [
-  "--stdin",
-  "--fix-to-stdout",
-  "--stdin-filename=file.json",
-] }
-language-servers = ["vscode-json-language-server", "efm"]
+language-servers = ["efm", "vscode-json-language-server"]
 auto-format = true
 
 [[language]]
@@ -80,6 +75,13 @@ command = "efm-langserver"
 documentFormatting = true
 
 [language-server.efm.config.languages]
+vue = [
+  { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
+    "%f(%l,%c): %tarning %m",
+    "%f(%l,%c): %rror %m",
+  ] },
+  { formatCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} --fix-to-stdout", formatStdin = true },
+]
 css = [
   { lintCommand = "stylelint --stdin --stdin-filename '${INPUT}' --formatter compact", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
     '%f: line %l, col %c, %tarning - %m',
@@ -87,7 +89,7 @@ css = [
   ] },
   { formatCommand = "stylelint --fix --stdin --stdin-filename '${INPUT}'", formatStdin = true },
 ]
-vue = [
+javascript = [
   { lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}", lintStdin = true, lintIgnoreExitCode = true, lintFormats = [
     "%f(%l,%c): %tarning %m",
     "%f(%l,%c): %rror %m",
@@ -144,3 +146,11 @@ config = {}
 name = "yaml"
 language-servers = ["efm"]
 auto-format = true
+
+[language-server.llmvm-codeassist-rust]
+command = "llmvm-codeassist"
+args = ["rust-analyzer"]
+
+[[language]]
+name = "rust"
+language-servers = ["llmvm-codeassist-rust"]
