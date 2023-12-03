@@ -61,8 +61,68 @@ if [ -f "$HOME/.secrets" ]; then
     source $HOME/.secrets
 fi
 
+
+# zsh vi mode
 # Only changing the escape key to `jk` in insert mode, we still
 # keep using the default keybindings `^[` in other modes
 ZVM_VI_INSERT_ESCAPE_BINDKEY=zr
 
 source $HOME/.local/share/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+my_zvm_vi_yank() {
+  zvm_vi_yank
+  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  zvm_exit_visual_mode
+}
+
+my_zvm_vi_delete() {
+  zvm_vi_delete
+  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  zvm_exit_visual_mode
+}
+
+my_zvm_vi_change() {
+  zvm_vi_change
+  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  zvm_exit_visual_mode
+}
+
+my_zvm_vi_change_eol() {
+  zvm_vi_change_eol
+  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  zvm_exit_visual_mode
+}
+
+my_zvm_vi_put_after() {
+  CUTBUFFER=$(termux-clipboard-get)
+  zvm_vi_put_after
+  zvm_highlight clear # zvm_vi_put_after introduces weird highlighting for me
+  zvm_exit_visual_mode
+}
+
+my_zvm_vi_put_before() {
+  CUTBUFFER=$(termux-clipboard-get)
+  zvm_vi_put_before
+  zvm_highlight clear # zvm_vi_put_before introduces weird highlighting for me
+  zvm_exit_visual_mode
+}
+
+zvm_after_lazy_keybindings() {
+  zvm_define_widget my_zvm_vi_yank
+  zvm_define_widget my_zvm_vi_delete
+  zvm_define_widget my_zvm_vi_change
+  zvm_define_widget my_zvm_vi_change_eol
+  zvm_define_widget my_zvm_vi_put_after
+  zvm_define_widget my_zvm_vi_put_before
+
+  zvm_bindkey visual 'y' my_zvm_vi_yank
+  zvm_bindkey visual 'd' my_zvm_vi_delete
+  zvm_bindkey visual 'x' my_zvm_vi_delete
+  zvm_bindkey vicmd  'C' my_zvm_vi_change_eol
+  zvm_bindkey visual 'c' my_zvm_vi_change
+  zvm_bindkey vicmd  'p' my_zvm_vi_put_after
+  zvm_bindkey vicmd  'P' my_zvm_vi_put_before
+}
+
+# zsh autosuggestions
+source $HOME/.local/share/.zsh-autosuggestions/zsh-autosuggestions.zsh
