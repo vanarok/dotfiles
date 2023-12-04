@@ -1,0 +1,4 @@
+#!/bin/bash
+
+string="$1"
+sgpt --code "$string"
