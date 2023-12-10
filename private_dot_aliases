@@ -5,6 +5,7 @@ alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles exce
 alias sudo='sudo '
 alias se='sudo -e '
 alias sE='sudo -E '
+alias sc='$EDITOR ~/.ssh/config'
 
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
@@ -32,5 +33,5 @@ agc() {
 
 alias dp="devpod --debug"
 alias cz="chezmoi"
-alias te="vi ~/todo/todo.txt"
-alias ne="vi ~/notes"
+alias jl='$EDITOR ~/android/Public/notes/jobs-list.md'
+

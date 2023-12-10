@@ -28,7 +28,16 @@ Host uberlyftinspection.com
 	User root
 	ForwardAgent Yes
 	
+Host uberlyftinspection.old
+	HostName 159.203.105.208
+	User root
+	
 Host admin.aumivi.com
 	HostName 188.64.57.51
 	User admin.aumivi.com_r912qd8biq
+	ForwardAgent Yes
+	
+Host arkanika-test
+	HostName 185.91.54.89
+	User root
 	ForwardAgent Yes
