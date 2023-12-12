@@ -13,7 +13,8 @@ pkg install -y termux-tools termux-api glab-cli git-delta python direnv nnn open
 echo -e "\e[1;31m-------install helix--------\e[0m"
 
 pkg install helix
-hx --grammar fetch && hx --grammar build
+hx --grammar fetch
+hx --grammar build
 
 echo -e "\e[1;31m-------install rust environment--------\e[0m"
 pkg install rust
