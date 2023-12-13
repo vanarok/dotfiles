@@ -9,6 +9,7 @@ pkg upgrade -y
 echo -e "\e[1;31m-------install other tools--------\e[0m"
 
 pkg install -y termux-tools termux-api glab-cli git-delta python direnv nnn openssh openssl libxml2 libxslt termux-api nodejs
+pip install trash-cli
 
 echo -e "\e[1;31m-------install helix--------\e[0m"
 
@@ -33,7 +34,7 @@ pkg install golang
 go install github.com/mattn/efm-langserver@latest
 
 corepack enable pnpm
-pnpm -g install prettier eslint eslint_d stylelint @fsouza/prettierd yaml-language-server @vue/language-server typescript@5.2.2
+pnpm -g install prettier eslint eslint_d stylelint @fsouza/prettierd yaml-language-server @vue/language-server typescript@5.2.2 vscode-langservers-extracted
 pkg install binutils
 cargo install taplo-cli --locked --features=lsp
 

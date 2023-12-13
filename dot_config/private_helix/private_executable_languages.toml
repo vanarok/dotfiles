@@ -3,8 +3,8 @@ name = "vue"
 file-types = ['vue']
 roots = ["package.json", "vite.config.js"]
 injection-regex = "vue"
-scope = "text.html.vue"
-language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
+scope = "source.vue"
+language-servers = [{ name = "vuels", except-features = ["format"] }, "efm"]
 indent = { tab-width = 2, unit = "  " }
 auto-format = true
 
@@ -12,14 +12,14 @@ auto-format = true
 name = "vue"
 source = { git = "https://github.com/ikatyang/tree-sitter-vue", rev = "91fe2754796cd8fba5f229505a23fa08f3546c06" }
 
-[language-server.volar]
+[language-server.vuels]
 command = "llmvm-codeassist"
 args = ["vue-language-server", "--stdio"]
 
-[language-server.volar.config.typescript]
+[language-server.vuels.config.typescript]
 tsdk = "/data/data/com.termux/files/home/.local/share/pnpm/global/5/node_modules/typescript/lib"
 
-[language-server.volar.config.languageFeatures]
+[language-server.vuels.config.languageFeatures]
 semanticTokens = true
 references = true
 definition = true
@@ -38,7 +38,7 @@ codeLens = true
 diagnostics = true
 takeOverMode = true
 
-[language-server.volar.config.documentFeatures]
+[language-server.vuels.config.documentFeatures]
 documentColor = false
 selectionRange = true
 foldingRange = true
@@ -123,7 +123,7 @@ html = [{ formatCommand = "prettierd '${INPUT}'", formatStdin = true }]
 name = "typescript"
 file-types = ['js', 'ts', 'cjs', 'mjs']
 roots = ["package.json", "vite.config.js"]
-language-servers = [{ name = "volar", except-features = ["format"] }, "efm"]
+language-servers = [{ name = "vuels", except-features = ["format"] }, "efm"]
 auto-format = true
 
 [[language]]

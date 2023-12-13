@@ -47,32 +47,29 @@ hidden = true
 git-ignore = true
 
 [keys.select]
-z = { r = [
+z = { z = [
   'commit_undo_checkpoint',
   'normal_mode',
   ':update',
-], z = [
-  'commit_undo_checkpoint',
+], r = [
   'normal_mode',
 ] }
 
 [keys.normal]
-z = { r = [
+z = { z = [
   'commit_undo_checkpoint',
   'normal_mode',
   ':update',
-], z = [
-  'commit_undo_checkpoint',
+], r = [
   'normal_mode',
 ] }
 
 [keys.insert]
-z = { r = [
+z = { z = [
   'commit_undo_checkpoint',
   'normal_mode',
   ':update',
-], z = [
-  'commit_undo_checkpoint',
+], r = [
   'normal_mode',
 ] }
 
