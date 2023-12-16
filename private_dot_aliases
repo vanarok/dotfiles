@@ -28,10 +28,10 @@ alias dc="docker compose"
 alias dr="docker"
 
 agc() {
-  git commit -e -m "$(git ds -- ':!:*.json' | sgpt --role git_commit)"
+  git commit -e -m "$(git ds -- ':!:*lock*' | sgpt "generate a descriptive commit message from these summaries(max 50char and without description):" --no-cache)"
 }
 
 alias dp="devpod --debug"
 alias cz="chezmoi"
-alias jl='$EDITOR ~/android/Public/notes/jobs-list.md'
+alias nt='$EDITOR ~/android/Public/notes'
 

@@ -1,2 +1,0 @@
-termux-open "http://localhost:5000"
-fava $HOME/Public/ledger.beancount

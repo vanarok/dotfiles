@@ -8,6 +8,7 @@ auto-save = true
 color-modes = true
 auto-pairs = true
 shell = ["zsh", "-c"]
+gutters = ["diff"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -16,21 +17,12 @@ select = "underline"
 
 [editor.statusline]
 left = [
-  "mode",
   "spinner",
   "file-name",
   "version-control",
   "file-modification-indicator",
 ]
-right = [
-  "diagnostics",
-  "selections",
-  "position",
-  "file-encoding",
-  "file-line-ending",
-  "file-type",
-]
-separator = "│"
+right = ["position"]
 
 [editor.indent-guides]
 render = true
