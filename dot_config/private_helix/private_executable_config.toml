@@ -10,6 +10,9 @@ auto-pairs = true
 shell = ["zsh", "-c"]
 gutters = ["diff"]
 
+[editor.soft-wrap]
+enable = true
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
