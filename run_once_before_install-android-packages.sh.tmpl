@@ -52,9 +52,16 @@ chsh -s zsh
 echo -e "\e[1;31m-------restore home dir structure--------\e[0m"
 echo "y" | termux-setup-storage
 mkdir -p projects
+mkdir -p hobby
 
 if [ ! -L "$HOME/Public" ]; then
   ln -s $HOME/storage/shared/Public
 fi
+
+if [ ! -L "$HOME/Public" ]; then
+  ln -s $HOME/storage/shared $HOME/android
+fi
+
+cp $HOME/storage/shared/Public/.secrets .
 
 {{ end -}}

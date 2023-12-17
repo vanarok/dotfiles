@@ -154,3 +154,7 @@ args = ["rust-analyzer"]
 [[language]]
 name = "rust"
 language-servers = ["llmvm-codeassist-rust"]
+
+[[language]]
+name = "bash"
+file-types = ['sh', 'tmpl']
