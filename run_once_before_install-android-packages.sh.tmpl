@@ -7,15 +7,16 @@ pkg update -y
 pkg upgrade -y
 
 echo -e "\e[1;31m-------install other tools--------\e[0m"
-
 pkg install -y termux-tools termux-api glab-cli git-delta python direnv nnn openssh openssl libxml2 libxslt termux-api nodejs
 pip install trash-cli
 
 echo -e "\e[1;31m-------install helix--------\e[0m"
-
 pkg install helix
 hx --grammar fetch
 hx --grammar build
+
+echo -e "\e[1;31m-------install neovim--------\e[0m"
+pkg install neovim
 
 echo -e "\e[1;31m-------install rust environment--------\e[0m"
 pkg install rust
