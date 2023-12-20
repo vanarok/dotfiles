@@ -21,9 +21,9 @@ select = "underline"
 [editor.statusline]
 left = [
   "spinner",
+  "file-modification-indicator",
   "file-name",
   "version-control",
-  "file-modification-indicator",
 ]
 right = ["position"]
 

@@ -41,3 +41,8 @@ Host arkanika-test
 	HostName 185.91.54.89
 	User root
 	ForwardAgent Yes
+
+Host test.gifs.ru 
+	HostName 109.68.214.194
+	User frontend
+	ForwardAgent Yes

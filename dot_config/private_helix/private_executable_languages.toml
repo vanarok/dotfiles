@@ -157,4 +157,13 @@ language-servers = ["llmvm-codeassist-rust"]
 
 [[language]]
 name = "bash"
-file-types = ['sh', 'tmpl']
+file-types = ['sh', 'tmpl', '.aliases']
+
+[[language]]
+name = "markdown"
+formatter = { command = "prettierd", args = [
+  "--stdin",
+  "--stdin-filename",
+  "file.md",
+] }
+auto-format = true

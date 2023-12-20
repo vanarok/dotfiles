@@ -33,5 +33,7 @@ agc() {
 
 alias dp="devpod --debug"
 alias cz="chezmoi"
-alias tl='$EDITOR ~/android/Public/notes/todos'
+alias cn='cd $HOME/Public/notes'
+alias otj='$EDITOR $HOME/Public/notes/freelance-and-job/todo.md'
+alias otp='$EDITOR $HOME/Public/notes/quality-of-life/todo.md'
 
