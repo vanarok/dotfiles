@@ -1,27 +1,28 @@
 [safe]
 	directory = *
 	
+# gitpod
 {{ if eq .chezmoi.username "gitpod" -}}
 
 [credential]
 	helper = /usr/bin/gp credential-helper
 
+# not gitpod
 {{ else if not (eq .chezmoi.username "gitpod") -}}
-
-# for not gitpod
 
 {{ end -}}
 
 [push]
 	default = simple
+	autoSetupRemote = true
 
 [user]
 	name = Ivan Isekeev
-	email = ivanisekeev0@gmail.com
+	email = hi@ivanisekeev.com
 
 [core]
 	editor = hx
-  	pager = delta
+	pager = delta
 	autocrlf = input
 	excludesFile = ~/.gitignore
 
@@ -33,17 +34,17 @@
 
 [delta]
 	navigate = true
-  	light = true
-  	side-by-side = true
-  	side-by-side = true
-  	line-numbers-left-format = ""
-  	line-numbers-right-format = "│ "
+	light = true
+	side-by-side = true
+	side-by-side = true
+	line-numbers-left-format = ""
+	line-numbers-right-format = "│ "
 
 [merge]
-  	conflictstyle = diff3
+	conflictstyle = diff3
 
 [diff]
-  	colorMoved = default
+	colorMoved = default
 
 [alias]
 	st = status

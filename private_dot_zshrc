@@ -126,3 +126,20 @@ zvm_after_lazy_keybindings() {
 
 # zsh autosuggestions
 source $HOME/.local/share/.zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+export ZSH_WAKATIME_PROJECT_DETECTION=true
+source $HOME/.local/share/.zsh-wakatime/wakatime.plugin.zsh
+# Shell-GPT integration ZSH v0.1
+_sgpt_zsh() {
+if [[ -n "$BUFFER" ]]; then
+    _sgpt_prev_cmd=$BUFFER
+    BUFFER+="⌛"
+    zle -I && zle redisplay
+    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
+    zle end-of-line
+fi
+}
+zle -N _sgpt_zsh
+bindkey ^g _sgpt_zsh
+# Shell-GPT integration ZSH v0.1

@@ -20,6 +20,7 @@ args = ["vue-language-server", "--stdio"]
 tsdk = "/data/data/com.termux/files/home/.local/share/pnpm/global/5/node_modules/typescript/lib"
 
 [language-server.vuels.config.languageFeatures]
+html = true
 semanticTokens = true
 references = true
 definition = true
@@ -39,6 +40,7 @@ diagnostics = true
 takeOverMode = true
 
 [language-server.vuels.config.documentFeatures]
+html = true
 documentColor = false
 selectionRange = true
 foldingRange = true

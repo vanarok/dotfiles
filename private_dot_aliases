@@ -22,8 +22,9 @@ alias pn="pnpm"
 alias np="npm"
 alias ya="yarn"
 alias ai="sgpt "
-alias ac="sgpt --code "
-alias as="sgpt --shell "
+alias aic="sgpt --code "
+alias aim="sgpt --chat "
+alias ais="sgpt --shell "
 alias dc="docker compose"
 alias dr="docker"
 
@@ -37,3 +38,7 @@ alias cn='cd $HOME/Public/notes'
 alias otj='$EDITOR $HOME/Public/notes/freelance-and-job/todo.md'
 alias otp='$EDITOR $HOME/Public/notes/quality-of-life/todo.md'
 
+alias pgd='pg_ctl -D /data/data/com.termux/files/usr/var/lib/postgresql -l $HOME/postgresql.log'
+alias pgl="$EDITOR $HOME/postgresql.log"
+
+alias tx='tmux'
