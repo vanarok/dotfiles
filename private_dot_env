@@ -3,8 +3,11 @@ export GOBIN=$HOME/.go/bin
 export CARGO_BIN=$HOME/.cargo/bin
 export LOCAL_BIN=$HOME/.local/bin
 export RUBY_BIN=$HOME/.rvm/bin
+export ANDROID_HOME="$HOME/Android/sdk"
+export ANDROID_SDK_ROOT="$HOME/Android/sdk"
+export JAVA_HOME=/data/data/com.termux/files/usr/opt/openjdk
 
-export PATH="$PATH:RUBY_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$LOCAL_BIN"
+export PATH="$PATH:$RUBY_BIN:$GOBIN:$CARGO_BIN:$PNPM_HOME:$LOCAL_BIN:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 
 export EDITOR="hx"
 export VISUAL="hx"

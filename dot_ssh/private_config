@@ -37,7 +37,7 @@ Host admin.aumivi.com
 	User admin.aumivi.com_r912qd8biq
 	ForwardAgent Yes
 	
-Host arkanika-test
+Host benice
 	HostName 185.91.54.89
 	User root
 	ForwardAgent Yes
