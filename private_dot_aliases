@@ -12,7 +12,7 @@ alias mkdir='mkdir -pv'
 alias md='mkdir -pv'
 alias ln='ln -sv'
 alias sm="systemctl"
-alias st="ssha"
+alias ss="ssha"
 
 alias gi="git"
 alias mm="hledger-ui --theme=terminal"
@@ -21,12 +21,17 @@ alias gl="glab"
 alias pn="pnpm"
 alias np="npm"
 alias ya="yarn"
+
 alias ai="sgpt "
 alias aic="sgpt --code "
 alias aim="sgpt --chat "
 alias ais="sgpt --shell "
+
 alias dc="docker compose"
 alias dr="docker"
+dcs() {
+  docker run $(docker build -q .)
+}
 
 agc() {
   git commit -e -m "$(git ds -- ':!:*lock*' | sgpt "generate a descriptive commit message from these summaries(max 50char and without description):" --no-cache)"
