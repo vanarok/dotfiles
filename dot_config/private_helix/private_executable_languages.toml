@@ -13,8 +13,12 @@ name = "vue"
 source = { git = "https://github.com/ikatyang/tree-sitter-vue", rev = "91fe2754796cd8fba5f229505a23fa08f3546c06" }
 
 [language-server.vuels]
-command = "llmvm-codeassist"
-args = ["vue-language-server", "--stdio"]
+command = "vue-language-server"
+args = ["--stdio"]
+
+# [language-server.vuels]
+# command = "llmvm-codeassist"
+# args = ["vue-language-server", "--stdio"]
 
 [language-server.vuels.config.typescript]
 tsdk = "/data/data/com.termux/files/home/.local/share/pnpm/global/5/node_modules/typescript/lib"

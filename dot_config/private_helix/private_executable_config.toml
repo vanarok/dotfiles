@@ -10,7 +10,6 @@ auto-pairs = true
 shell = ["zsh", "-c"]
 gutters = ["diff"]
 
-bufferline = "multiple"
 cursorline = true
 
 [editor.soft-wrap]
@@ -22,7 +21,7 @@ normal = "block"
 select = "underline"
 
 [editor.statusline]
-left = ["diagnostics", "file-modification-indicator", "version-control"]
+left = ["diagnostics", "file-name", "file-modification-indicator"]
 right = ["position"]
 
 [editor.indent-guides]
