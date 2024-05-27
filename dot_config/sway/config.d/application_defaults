@@ -1,0 +1,91 @@
+# assign [app_id="libreoffice-*"] 6
+# for_window [app_id="libreoffice-*"] focus
+
+# assign [app_id="thunderbird"] 4
+# for_window [app_id="thunderbird"] focus
+
+# assign [class="Upwork" title="Upwork"] 6
+# for_window [class="Upwork" title="Upwork"] focus
+# for_window [class="Upwork" title="Control Panel"] move position 1210 -30
+
+# assign [app_id="code-url-handler"] 9
+# for_window [app_id="code-url-handler"] focus
+
+assign [class="jetbrains-webstorm"] 1
+for_window [class="jetbrains-webstorm"] focus
+
+assign [class="Chromium" window_role="browser"] 2
+for_window [class="Chromium" window_role="browser"] focus
+
+assign [app_id="kitty"] 1
+for_window [app_id="kitty"] focus
+
+assign [class="superProductivity"] 3
+for_window [class="superProductivity"] focus
+
+assign [app_id="io.github.tdesktop_x64.TDesktop"] 4
+for_window [app_id="io.github.tdesktop_x64.TDesktop"] focus, layout tabbed
+
+assign [app_id="org.telegram.desktop"] 4
+for_window [app_id="org.telegram.desktop"] focus, layout tabbed
+
+assign [app_id="Skype"] 4
+for_window [app_id="Skype"] focus
+
+# Gemini web app
+assign [instance="crx_pencadimjfmppcidgpbjepbjjkelgjcd" window_role=pop-up] 5
+for_window [instance="crx_pencadimjfmppcidgpbjepbjjkelgjcd" window_role=pop-up] focus
+
+# Google Docs web app
+assign [instance="crx_mpnpojknpmmopombnjdcgaaiekajbnjb" window_role=pop-up] 6
+for_window [instance="crx_mpnpojknpmmopombnjdcgaaiekajbnjb" window_role=pop-up] focus
+
+# Invoice Ninja web app
+assign [instance="crx_kibbaakffkfmdnmdmljdjlnhjbibdgio" window_role=pop-up] 7
+for_window [instance="crx_kibbaakffkfmdnmdmljdjlnhjbibdgio" window_role=pop-up] focus
+
+for_window [class="Spotify"] move to workspace 8, focus, layout tabbed
+
+assign [app_id="com.github.wwmm.easyeffects"] 9
+for_window [app_id="com.github.wwmm.easyeffects"] focus
+
+for_window [app_id="xed"] focus
+for_window [app_id="Kotatogram"] layout tabbed
+for_window [app_id="thunderbird"] layout tabbed
+for_window [class="Upwork" title="Messages - Upwork"] layout tabbed
+for_window [class="Yad" instance="yad"] floating enable
+for_window [app_id="yad"] floating enable
+for_window [app_id="blueman-manager"] floating enable, resize set width 40 ppt height 30 ppt
+for_window [class="Upwork" title="Upwork"] floating enable, sticky enable
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [app_id="pavucontrol" ] floating enable, resize set width 40 ppt height 70 ppt
+for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [app_id="pamac-manager"] floating enable, resize set width 80 ppt height 70 ppt
+for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [app_id="org.keepassxc.KeePassXC"] focus, floating enable, sticky enable, resize set width 60ppt height 60ppt
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="firefox" title="Library"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
+for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
+for_window [title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="xsensors"] floating enable
+for_window [title="Save File"] floating enable
+for_window [title="Save As"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable, resize set width 80ppt height 60ppt
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+for_window [app_id=com.github.jmoerman.go-for-it] floating enable, sticky enable, resize set width 1 ppt height 1 ppt, move position 1024 330
+for_window [app_id=io.crow_translate.CrowTranslate] floating enable, sticky enable, resize set width 40 ppt height 40 ppt, move position 1120 620
+for_window [class="superProductivity"] layout tabbed
+for_window [app_id="udiskie"] floating enable, sticky enable
+
+for_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="qutebrowser"] inhibit_idle fullscreen
+for_window [app_id="Chromium"] inhibit_idle fullscreen

@@ -1,0 +1,34 @@
+exec_always ~/.config/sway/scripts/import-gsettings
+
+default_dim_inactive 0.04
+dim_inactive_colors.unfocused #000000FF
+
+default_border none
+default_floating_border none
+hide_edge_borders --i3 smart
+
+font pango:JetBrainsMono 13
+titlebar_padding 1
+titlebar_border_thickness 1
+smart_borders on
+
+titlebar_separator disable
+
+# set background
+output eDP-1 background $HOME/Pictures/wallpaper2.jpg fill
+
+for_window [shell="xdg_shell"] title_format "%title"
+for_window [shell="x_wayland"] title_format "%title"
+
+blur enable
+shadows enable
+shadow_blur_radius 5
+corner_radius 12
+
+# class                 border    bground   text    indicator child_border
+client.focused          #1877F2   #1877F2   #FFFFFF #2979FF   #1877F2
+client.focused_inactive #ffff00   #ffff00   #000000 #44475A   #D2D8E8f2
+client.unfocused        #F8F7FA   #D9E7F4   #000000 #282A36   #F8F7FA
+client.urgent           #44475A   #FF5555   #F8F8F2 #FF5555   #FF5555
+client.placeholder      #282A36   #282A36   #F8F8F2 #282A36   #282A36
+client.background       #F8F8F2
