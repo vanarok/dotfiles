@@ -13,12 +13,8 @@ name = "vue"
 source = { git = "https://github.com/ikatyang/tree-sitter-vue", rev = "91fe2754796cd8fba5f229505a23fa08f3546c06" }
 
 [language-server.vuels]
-command = "vue-language-server"
-args = ["--stdio"]
-
-# [language-server.vuels]
-# command = "llmvm-codeassist"
-# args = ["vue-language-server", "--stdio"]
+command = "llmvm-codeassist"
+args = ["vue-language-server", "--stdio"]
 
 [language-server.vuels.config.typescript]
 tsdk = "/data/data/com.termux/files/home/.local/share/pnpm/global/5/node_modules/typescript/lib"
@@ -44,7 +40,6 @@ diagnostics = true
 takeOverMode = true
 
 [language-server.vuels.config.documentFeatures]
-html = true
 documentColor = false
 selectionRange = true
 foldingRange = true
@@ -160,16 +155,3 @@ args = ["rust-analyzer"]
 [[language]]
 name = "rust"
 language-servers = ["llmvm-codeassist-rust"]
-
-[[language]]
-name = "bash"
-file-types = ['sh', 'tmpl', '.aliases']
-
-[[language]]
-name = "markdown"
-formatter = { command = "prettierd", args = [
-  "--stdin",
-  "--stdin-filename",
-  "file.md",
-] }
-auto-format = true

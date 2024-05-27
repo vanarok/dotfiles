@@ -5,45 +5,38 @@ alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles exce
 alias sudo='sudo '
 alias se='sudo -e '
 alias sE='sudo -E '
-alias sc='$EDITOR ~/.ssh/config'
 
 alias rm='rm -i'
 alias mkdir='mkdir -pv'
 alias md='mkdir -pv'
 alias ln='ln -sv'
 alias sm="systemctl"
-alias ss="ssha"
 
 alias gi="git"
-alias mm="hledger-ui --theme=terminal"
+alias mm="hledger-ui --theme=terminal -f $HOME/Documents/Finance/2024.hledger"
 alias nn="nnn"
 alias gl="glab"
 alias pn="pnpm"
 alias np="npm"
 alias ya="yarn"
 
-alias ai="sgpt "
-alias aic="sgpt --code "
-alias aim="sgpt --chat "
-alias ais="sgpt --shell "
+aic() {
+  git commit -e -m "$(git ds -- ':!:*.json' | sgpt --role git_commit)"
+}
+alias ai="sgpt --shell"
 
-alias dc="docker compose"
 alias dr="docker"
-dcs() {
-  docker run $(docker build -q .)
+function docker-run() {
+  docker run -it $(docker build -q .)
 }
-
-agc() {
-  git commit -e -m "$(git ds -- ':!:*lock*' | sgpt "generate a descriptive commit message from these summaries(max 50char and without description):" --no-cache)"
-}
+alias dc="docker compose"
 
 alias dp="devpod --debug"
 alias cz="chezmoi"
-alias cn='cd $HOME/Public/notes'
-alias otj='$EDITOR $HOME/Public/notes/freelance-and-job/todo.md'
-alias otp='$EDITOR $HOME/Public/notes/quality-of-life/todo.md'
 
-alias pgd='pg_ctl -D /data/data/com.termux/files/usr/var/lib/postgresql -l $HOME/postgresql.log'
-alias pgl="$EDITOR $HOME/postgresql.log"
+alias bt="btop"
+alias vc="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
+alias code="code --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
-alias tx='tmux'
+alias sway-edit="$EDITOR $HOME/.config/sway"
+alias ssh-edit='$EDITOR ~/.ssh/config'

@@ -7,10 +7,14 @@ PS1='%n@%m %~ $ '
 [[ -z "$FUNCNEST" ]] && export FUNCNEST=100          # limits recursive functions, see 'man bash'
 
 HISTFILE=~/.histfile
-HISTSIZE=10000
+HISTSIZE=500000
 HISTORY_IGNORE='sgpt *'
 HIST_NO_STORE='sgpt *'
-SAVEHIST=10000
+SAVEHIST=$HISTSIZE
+
+zshaddhistory() { 
+  whence ${${(z)1}[1]} >| /dev/null || return 1 
+} 
 
 bindkey -v
 autoload -U compinit; compinit
@@ -31,7 +35,7 @@ setopt append_history
 # import new commands from the history file also in other zsh-session
 setopt inc_append_history
 setopt share_history
-
+ 
 # save each command's beginning timestamp and the duration to the history file
 setopt extended_history
 
@@ -61,47 +65,46 @@ if [ -f "$HOME/.secrets" ]; then
     source $HOME/.secrets
 fi
 
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # zsh vi mode
 # Only changing the escape key to `jk` in insert mode, we still
 # keep using the default keybindings `^[` in other modes
-ZVM_VI_INSERT_ESCAPE_BINDKEY=zr
-
-source $HOME/.local/share/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# ZVM_VI_INSERT_ESCAPE_BINDKEY=rt
 
 my_zvm_vi_yank() {
   zvm_vi_yank
-  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  echo -en "${CUTBUFFER}" | wl-copy
   zvm_exit_visual_mode
 }
 
 my_zvm_vi_delete() {
   zvm_vi_delete
-  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  echo -en "${CUTBUFFER}" | wl-copy
   zvm_exit_visual_mode
 }
 
 my_zvm_vi_change() {
   zvm_vi_change
-  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  echo -en "${CUTBUFFER}" | wl-copy
   zvm_exit_visual_mode
 }
 
 my_zvm_vi_change_eol() {
   zvm_vi_change_eol
-  echo -en "${CUTBUFFER}" | termux-clipboard-set
+  echo -en "${CUTBUFFER}" | wl-copy
   zvm_exit_visual_mode
 }
 
 my_zvm_vi_put_after() {
-  CUTBUFFER=$(termux-clipboard-get)
+  CUTBUFFER=$(wl-paste)
   zvm_vi_put_after
   zvm_highlight clear # zvm_vi_put_after introduces weird highlighting for me
   zvm_exit_visual_mode
 }
 
 my_zvm_vi_put_before() {
-  CUTBUFFER=$(termux-clipboard-get)
+  CUTBUFFER=$(wl-paste)
   zvm_vi_put_before
   zvm_highlight clear # zvm_vi_put_before introduces weird highlighting for me
   zvm_exit_visual_mode
@@ -124,22 +127,14 @@ zvm_after_lazy_keybindings() {
   zvm_bindkey vicmd  'P' my_zvm_vi_put_before
 }
 
-# zsh autosuggestions
-source $HOME/.local/share/.zsh-autosuggestions/zsh-autosuggestions.zsh
+# add ssh keys to ssh agent
+ssh-add
 
+# init node version manager
+source /usr/share/nvm/init-nvm.sh
 
-export ZSH_WAKATIME_PROJECT_DETECTION=true
-source $HOME/.local/share/.zsh-wakatime/wakatime.plugin.zsh
-# Shell-GPT integration ZSH v0.1
-_sgpt_zsh() {
-if [[ -n "$BUFFER" ]]; then
-    _sgpt_prev_cmd=$BUFFER
-    BUFFER+="⌛"
-    zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd")
-    zle end-of-line
-fi
-}
-zle -N _sgpt_zsh
-bindkey ^g _sgpt_zsh
-# Shell-GPT integration ZSH v0.1
+# autosuggestion plugin 
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh  
+
+# highlight plugin
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh

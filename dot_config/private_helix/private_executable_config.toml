@@ -1,4 +1,4 @@
-theme = "onelight"
+theme = "modus_operandi"
 
 [editor]
 line-number = "relative"
@@ -8,12 +8,6 @@ auto-save = true
 color-modes = true
 auto-pairs = true
 shell = ["zsh", "-c"]
-gutters = ["diff"]
-
-cursorline = true
-
-[editor.soft-wrap]
-enable = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -21,8 +15,22 @@ normal = "block"
 select = "underline"
 
 [editor.statusline]
-left = ["diagnostics", "file-name", "file-modification-indicator"]
-right = ["position"]
+left = [
+  "mode",
+  "spinner",
+  "file-name",
+  "version-control",
+  "file-modification-indicator",
+]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
+separator = "│"
 
 [editor.indent-guides]
 render = true
@@ -47,23 +55,23 @@ z = { z = [
   'normal_mode',
 ] }
 
-[keys.normal]
-z = { z = [
-  'commit_undo_checkpoint',
-  'normal_mode',
-  ':update',
-], r = [
-  'normal_mode',
-] }
+# [keys.normal]
+# r = { t = [
+#   'commit_undo_checkpoint',
+#   'normal_mode',
+#   ':update',
+# ], r = [
+#   'normal_mode',
+# ] }
 
-[keys.insert]
-z = { z = [
-  'commit_undo_checkpoint',
-  'normal_mode',
-  ':update',
-], r = [
-  'normal_mode',
-] }
+# [keys.insert]
+# r = { t = [
+#   'commit_undo_checkpoint',
+#   'normal_mode',
+#   ':update',
+# ], r = [
+#   'normal_mode',
+# ] }
 
 up = "no_op"
 down = "no_op"

@@ -1,7 +1,4 @@
-Host *
-   ServerAliveInterval 60
-   ServerAliveCountMax 2
-   TCPKeepAlive no
+
 	
 Host kings-palace
 	HostName 188.166.193.238
@@ -12,7 +9,12 @@ Host gifs.ru
 	HostName 77.232.137.100
 	User frontend
 	ForwardAgent Yes
-	
+
+Host test.gifs.ru
+	HostName test.gifs.ru
+	User frontend
+	ForwardAgent Yes	
+
 Host arl.kg
 	HostName 185.189.12.152
 	User app
@@ -37,12 +39,28 @@ Host admin.aumivi.com
 	User admin.aumivi.com_r912qd8biq
 	ForwardAgent Yes
 	
-Host benice
+Host arkanika-test
 	HostName 185.91.54.89
 	User root
 	ForwardAgent Yes
 
-Host test.gifs.ru 
-	HostName 109.68.214.194
-	User frontend
+Host xwave
+	HostName 45.9.75.151
+	User app
 	ForwardAgent Yes
+
+Host healthybaby.site
+	HostName 89.111.174.100
+	User root
+	ForwardAgent Yes
+
+Host cosmo.wiki
+	HostName 18.198.220.62
+	User ubuntu
+	ForwardAgent Yes
+
+Host *
+	User root
+	ServerAliveInterval 20
+	ServerAliveCountMax 2
+	TCPKeepAlive no
