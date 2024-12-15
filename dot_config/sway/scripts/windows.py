@@ -57,6 +57,7 @@ def extract_nodes_iterative(workspace):
 
 # Returns an array of all windows
 def parse_windows(windows):
+    # print
     return [window.get("name") for window in windows]
 
 

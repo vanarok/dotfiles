@@ -1,10 +1,12 @@
 #!/bin/bash
 
-entries="Break Logout Reboot Shutdown"
+entries="Sleep Break Logout Reboot Shutdown"
 
 selected=$(printf '%s\n' $entries | bemenu -m eDP-1 | awk '{print tolower($1)}')
 
 case $selected in
+  sleep)
+    exec systemctl suspend;;
   break)
     exec safeeyes --take-break;;
   logout)

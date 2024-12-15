@@ -125,3 +125,5 @@ fi
 
 source .env
 source .secrects
+
+PATH=~/.console-ninja/.bin:$PATH

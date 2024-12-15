@@ -1,16 +1,7 @@
 [safe]
 	directory = *
 	
-# gitpod
-{{ if eq .chezmoi.username "gitpod" -}}
-
-[credential]
-	helper = /usr/bin/gp credential-helper
-
-# not gitpod
-{{ else if not (eq .chezmoi.username "gitpod") -}}
-
-{{ end -}}
+# for not gitpod
 
 [push]
 	default = simple
@@ -19,10 +10,11 @@
 [user]
 	name = Ivan Isekeev
 	email = hi@ivanisekeev.com
+	signingkey = 7E1AA87FD81BB7D1C050AE4EF6FEE7E6B467560C
 
 [core]
 	editor = hx
-	pager = delta
+  	pager = delta
 	autocrlf = input
 	excludesFile = ~/.gitignore
 
@@ -32,27 +24,22 @@
 [init]
 	defaultBranch = main
 
-[branch "master"]
-    mergeOptions = --squash
-
 [delta]
 	navigate = true
-	light = true
-	side-by-side = true
-	side-by-side = true
-	line-numbers-left-format = ""
-	line-numbers-right-format = "│ "
+  	light = true
+  	side-by-side = true
+  	side-by-side = true
+  	line-numbers-left-format = ""
+  	line-numbers-right-format = "│ "
 
 [merge]
-	conflictstyle = diff3
+  	conflictstyle = diff3
 
 [diff]
-	colorMoved = default
-
-[checkout]
-  defaultRemote = origin
+  	colorMoved = default
 
 [alias]
+	cl = clone
 	st = status
 	ci = commit
 	br = branch
@@ -73,3 +60,13 @@
 [credential "https://gitlab.vrt.one"]
 	helper = 
 	helper = !/data/data/com.termux/files/usr/bin/glab auth git-credential
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true
+[credential "https://gitlab.corp.rsv.ru"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential

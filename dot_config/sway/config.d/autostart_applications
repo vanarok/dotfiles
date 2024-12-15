@@ -1,9 +1,6 @@
 # Auth with polkit-gnome:
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-# Desktop notifications
-exec mako
-
 # sway does not set DISPLAY/WAYLAND_DISPLAY in the systemd user environment
 # See FS#63021
 # Adapted from xorg's 50-systemd-user.sh, which achieves a similar goal.
@@ -21,15 +18,47 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
                                                   XDG_CURRENT_DESKTOP=sway \
                                                   WAYLAND_DISPLAY
                                                   
-# exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
-# exec hash dbus-update-activation-environment 2>/dev/null && \
-#     dbus-update-activation-environment --systemd DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway WAYLAND_DISPLAY
+# Desktop notifications
+exec mako
 
-exec wl-paste -t text --watch clipman store --no-persist
-exec syncthing
-exec gammastep
-exec keepassxc
-exec poweralertd
-exec safeeyes
+# Display settings
+#exec_always kanshi
+
+# Auto mount usb disks
 exec udiskie --no-tray --no-appindicator --notify
+
+# Awesome touchpad gestures
 exec libinput-gestures-setup start
+
+# Overlay caps lock indicator
+exec swayosd-server
+
+# Audio effects
+exec easyeffects --gapplication-service
+
+# Rest break
+exec_always ianny
+
+# Display light correction for day and night
+exec_always gammastep
+
+# Power alerts
+exec poweralertd
+
+# SSH agent for forwarding keys to other hosts
+exec ssh-agent -D -a $SSH_AUTH_SOCK
+
+# Sync files
+exec syncthing serve --no-browser --no-restart --logflags=0
+
+# Persistent clipboard/history 
+# exec wl-paste -n -t text --watch clipman store --no-persist
+
+# Fix bluethooth headset control stop/resume
+exec "mpris-proxy"
+
+# Blueman background for notifications
+exec_always blueman-applet
+
+# Keepassxc database sync to cloud
+exec rclone mount google:/Keepassxc ~/Keepassxc 

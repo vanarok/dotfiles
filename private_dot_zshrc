@@ -1,3 +1,5 @@
+#!/bin/sh
+
 [[ $- != *i* ]] && return
 
 [[ "$(whoami)" = "root" ]] && return
@@ -59,7 +61,7 @@ export DIRENV_LOG_FORMAT=""
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-source ~/.aliases   
+source ~/.zaliases   
 
 if [ -f "$HOME/.secrets" ]; then
     source $HOME/.secrets
@@ -127,9 +129,6 @@ zvm_after_lazy_keybindings() {
   zvm_bindkey vicmd  'P' my_zvm_vi_put_before
 }
 
-# add ssh keys to ssh agent
-ssh-add
-
 # init node version manager
 source /usr/share/nvm/init-nvm.sh
 
@@ -138,3 +137,30 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # highlight plugin
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+PATH=~/.console-ninja/.bin:$PATH
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

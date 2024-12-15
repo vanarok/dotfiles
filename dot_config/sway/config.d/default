@@ -5,32 +5,27 @@ set $down j
 set $up k
 set $right l
 
-set $term-float "kitty --single-instance"
-set $menu j4-dmenu-desktop --dmenu="bemenu  --margin 500 -m $(swaymsg -r -t get_outputs | jq -r '. [] | select (.focused == true) | .name') --no-exec" | xargs swaymsg exec --
+set $term-float "foot"
+set $menu "fuzzel --match-mode=fzf"
 set $powermenu ~/.config/sway/scripts/power-menu.sh
 set $translator crow
 
 exec swayidle -w\
     timeout 1070 'swaylock -f -C ~/.config/swaylock/config'\
-    timeout 770 'swaymsg "output * power off"' \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -C ~/.config/swaylock/config'
 	
-exec swayidle -w\
-    timeout 960 'safeeyes --disable' \
-    resume 'safeeyes --enable' \
-
 bindsym $mod+0 exec ~/.config/sway/scripts/lockman.sh
 bindsym $mod+Return exec $term-float
 bindsym $mod+Shift+p exec $powermenu
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 bindsym $mod+p exec $menu
 bindsym $mod+t exec $translator; [app_id=io.crow_translate.CrowTranslate] focus
 
 # fast access telegram
 set $telegram-personal "telegram-desktop"
-set $telegram-work "64gram-desktop"
-bindsym $mod+x exec $telegram-work; [app_id="io.github.tdesktop_x64.TDesktop"] focus
+set $telegram-work "ayugram-desktop"
+bindsym $mod+x exec dex ~/Desktop/chrome-majiogicmcnmdhhlgmkahaleckhjbmlk-Default.desktop
 bindsym $mod+Shift+x exec $telegram-personal; [app_id="org.telegram.desktop"] focus
 
 floating_modifier $mod normal
@@ -86,20 +81,20 @@ bindsym $mod+e layout toggle split
 
 bindsym $mod+f fullscreen
 
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
-bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus mode_toggle
 
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 bindsym $mod+n move scratchpad
 bindsym $mod+Shift+n scratchpad show
 
 mode "resize" {
-	bindsym $left resize shrink width 20px
-	bindsym $right resize grow width 20px
-	bindsym $up resize shrink height 20px
-	bindsym $down resize grow height 20px
+	bindsym $left resize shrink width 40px
+	bindsym $right resize grow width 40px
+	bindsym $up resize shrink height 40px
+	bindsym $down resize grow height 40px
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default
@@ -112,12 +107,13 @@ bindsym --whole-window --border $mod+button5 resize grow height 5 px or 5 ppt
 bindsym --whole-window --border $mod+Shift+button4 resize shrink width 5 px or 5 ppt
 bindsym --whole-window --border $mod+Shift+button5 resize grow width 5 px or 5 ppt
 
-bindsym --locked XF86AudioRaiseVolume exec pamixer -ui 2
-bindsym --locked XF86AudioLowerVolume exec pamixer -ud 2
-bindsym --locked XF86AudioMute exec pamixer -t
+bindsym --locked XF86AudioRaiseVolume exec swayosd-client --output-volume 10
+bindsym --locked XF86AudioLowerVolume exec swayosd-client --output-volume -10
+bindsym --locked XF86AudioMute exec swayosd-client --output-volume mute-toggle
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
+bindcode 172 exec playerctl pause
 bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -125,11 +121,11 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+u exec playerctl next && notify-send "next track"
 bindsym $mod+Shift+u exec playerctl previous && notify-send "previous track"
 
-bindsym $mod+s exec playerctl -a volume 0.1+ && notify-send "volume +10%"
-bindsym $mod+Shift+s exec playerctl -a volume 0.1- && notify-send "volume -10%"
+bindsym $mod+s exec swayosd-client --output-volume 10
+bindsym $mod+Shift+s exec swayosd-client --output-volume -10
 
-bindsym XF86MonBrightnessUp exec brightnessctl -c backlight set +5% && notify-send "backlight +5%"
-bindsym XF86MonBrightnessDown exec brightnessctl -c backlight set 5%- && notify-send "backlight -5%"
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness +10
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness -10
 
 bindsym $mod+Alt+s exec grimshot --notify save output
 bindsym $mod+Alt+Shift+s exec grim -g "$(slurp)" - | swappy -f -
@@ -137,25 +133,37 @@ bindsym $mod+Alt+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 # disable laptop keyboard
 bindsym $mod+Alt+i exec "swaymsg 'input' '1:1:AT_Translated_Set_2_keyboard' 'events' 'toggle' 'enabled' 'disabled'"
 
-bindsym Ctrl+Print exec notify-send 'Record start' && wf-recorder -f ~/Videos/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
-bindsym Ctrl+Shift+Print exec wf-recorder -g "$$(slurp && notify-send 'Record start')" -f ~/Videos/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
-bindsym Ctrl+Shift+BackSpace exec killall -s SIGINT wf-recorder && notify-send 'Record end'
+bindsym $mod+Alt+r exec notify-send 'Record start' && wf-recorder -f ~/Videos/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+bindsym $mod+Shift+r exec wf-recorder -g "$$(slurp && notify-send 'Record start')" -f ~/Videos/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+bindsym $mod+Ctrl+r exec killall -s SIGINT wf-recorder && notify-send 'Record end'
 
 # fast access browser
-set $browser /usr/bin/chromium --force-device-scale-factor=1.25 --ozone-platform=x11
-bindsym $mod+o exec 'swaymsg [class="Chromium" window_role=browser] focus || $browser'
+set $browser /usr/bin/chromium
+bindsym $mod+o exec qutebrowser
 
 # fast access IDE
 set $IDE webstorm
 bindsym $mod+i exec $IDE; [class="jetbrains-webstorm"] focus
 
+# Chromium App command execute
+set $chromium /usr/bin/chromium "--profile-directory=Profile 1" --app-id=
+
 # Quick access for Gemini web app
-set $Gemini /usr/bin/chromium "--profile-directory=Profile 1" --app-id=pencadimjfmppcidgpbjepbjjkelgjcd
-bindsym $mod+g exec 'swaymsg [instance="crx_pencadimjfmppcidgpbjepbjjkelgjcd" window_role=pop-up] focus || $Gemini'
+set $gemini-app-id pencadimjfmppcidgpbjepbjjkelgjcd
+bindsym $mod+g exec 'swaymsg [app_id="chrome-$gemini-app-id-Profile_1"] focus || $chromium$gemini-app-id'
 
 # Quick access for Google Docs web app
-set $GoogleDocs /usr/bin/chromium "--profile-directory=Profile 1" --app-id=mpnpojknpmmopombnjdcgaaiekajbnjb
-bindsym $mod+d exec 'swaymsg [instance="mpnpojknpmmopombnjdcgaaiekajbnjb" window_role=pop-up] focus || $GoogleDocs'
+set $googledocs-app-id mpnpojknpmmopombnjdcgaaiekajbnjb
+bindsym $mod+d exec 'swaymsg [app_id="chrome-$googledocs-app-id-Profile_1"] focus || $chromium$googledocs-app-id'
+
+# Quick access for invoice ninja
+set $invoiceninja kibbaakffkfmdnmdmljdjlnhjbibdgio
+bindsym $mod+y e/usr/bin/chromium '--profile-directory=Profile 1' --app-id=amkbjejainmfabjjhcehocljfccjchakxec 'swaymsg [app_id="chrome-$invoiceninja-Profile_1"] focus || $chromium$invoiceninja'
 
 bindsym $mod+m exec "keepassxc ~/Sync/Database.kdx"; [app_id="org.keepassxc.KeePassXC"] focus
 bindsym $mod+w exec python ~/.config/sway/scripts/windows.py
+
+bindsym $mod+Alt+Shift+d exec notify-send echo $EDITOR
+
+# Shortcut process manager
+bindsym $mod+Ctrl+t exec "foot btop"
