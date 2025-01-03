@@ -37,6 +37,9 @@ for_window [app_id=com.github.wwmm.easyeffects] focus, floating enable, resize s
 # mpv
 for_window [app_id=mpv] focus, floating enable, resize set width 30 ppt height 50 ppt
 
+# Glace Todo
+for_window [app_id="glace-todo"] floating enable, sticky enable, resize set width 15 ppt height 45 ppt
+
 assign [app_id=obsidian] workspace 6
 assign [app_id=spotify] workspace 9
 assign [app_id=chrome-kibbaakffkfmdnmdmljdjlnhjbibdgio-Profile_1] workspace 6

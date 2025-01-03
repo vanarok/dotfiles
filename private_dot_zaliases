@@ -30,16 +30,8 @@ function docker-run() {
   docker run -it $(docker build -q .)
 }
 alias dc="docker compose"
-
-alias dp="devpod --debug"
-alias cz="chezmoi"
-
+alias c="chezmoi"
 alias bt="btop"
-
-alias sway-edit="$EDITOR $HOME/.config/sway"
-alias niri-edit="$EDITOR $HOME/.config/niri"
-alias ssh-edit='$EDITOR ~/.ssh/config'
-
 alias hx=helix
 
 # поддержка открытия нового терминала в текущей папке
