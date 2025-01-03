@@ -6,7 +6,7 @@ selected=$(printf '%s\n' $entries | bemenu -m eDP-1 | awk '{print tolower($1)}')
 
 case $selected in
   sleep)
-    exec systemctl suspend;;
+    exec systemctl sleep;;
   break)
     exec safeeyes --take-break;;
   logout)

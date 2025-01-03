@@ -127,3 +127,5 @@ source .env
 source .secrects
 
 PATH=~/.console-ninja/.bin:$PATH
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u)

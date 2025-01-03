@@ -1,7 +1,7 @@
 #!/bin/sh
 
 alias ls='ls --color=auto'
-alias vi=vim
+alias v=vim
 
 alias sudo='sudo '
 alias se='sudo -e '

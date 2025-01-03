@@ -5,15 +5,13 @@ set $down j
 set $up k
 set $right l
 
-set $term-float "foot"
+set $term-float "ptyxis"
 set $menu "fuzzel --match-mode=fzf"
 set $powermenu ~/.config/sway/scripts/power-menu.sh
 set $translator crow
 
-exec swayidle -w\
-    timeout 1070 'swaylock -f -C ~/.config/swaylock/config'\
-    resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -C ~/.config/swaylock/config'
+exec swayidle idlehint 1
+exec_always swayidle -w before-sleep "$lock"
 	
 bindsym $mod+0 exec ~/.config/sway/scripts/lockman.sh
 bindsym $mod+Return exec $term-float
@@ -24,9 +22,9 @@ bindsym $mod+t exec $translator; [app_id=io.crow_translate.CrowTranslate] focus
 
 # fast access telegram
 set $telegram-personal "telegram-desktop"
-set $telegram-work "ayugram-desktop"
-bindsym $mod+x exec dex ~/Desktop/chrome-majiogicmcnmdhhlgmkahaleckhjbmlk-Default.desktop
-bindsym $mod+Shift+x exec $telegram-personal; [app_id="org.telegram.desktop"] focus
+# set $telegram-work "ayugram-desktop"
+# bindsym $mod+x exec dex ~/Desktop/chrome-majiogicmcnmdhhlgmkahaleckhjbmlk-Default.desktop
+bindsym $mod+x exec $telegram-personal; [app_id="org.telegram.desktop"] focus
 
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload

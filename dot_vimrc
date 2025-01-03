@@ -108,3 +108,12 @@ inoremap <expr> <silent> <C-R><C-P>+ <SID>ctrl_r("\<C-R>\<C-P>")
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
+
+"" My settings
+
+" enable syntax highlight
+syntax on
+
+" indent 2 space
+set shiftwidth=2
+set tabstop=2

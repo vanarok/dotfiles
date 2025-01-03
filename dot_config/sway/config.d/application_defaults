@@ -1,8 +1,42 @@
+# Make float desktop
+for_window [app_id=".*"] floating enable
+
 # workspace_layout tabbed
 for_window [class="Upwork" title="Control Panel"] move position 1210 -30
 
 # for_window [title="DevTools*"] focus, floating enable
-assign [app_id=org.telegram.desktop] workspace 5
+
+# Telegram
+# assign [app_id=org.telegram.desktop] workspace 5
+for_window [app_id=org.telegram.desktop] focus, floating enable, resize set width 40 ppt height 70 ppt
+
+# Photo view
+for_window [app_id=org.gnome.Loupe] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# File manager
+for_window [app_id=org.gnome.Nautilus] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# Gvim
+for_window [class=Gvim] focus, floating enable
+
+# Gnome editor
+for_window [app_id=org.gnome.TextEditor] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# Gnome terminal
+for_window [app_id=org.gnome.Console] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# Ptyxis terminal
+for_window [app_id=org.gnome.Ptyxis] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# Sticky notes
+for_window [app_id=com.vixalien.sticky] focus, floating enable
+
+# Easy effects
+for_window [app_id=com.github.wwmm.easyeffects] focus, floating enable, resize set width 30 ppt height 50 ppt
+
+# mpv
+for_window [app_id=mpv] focus, floating enable, resize set width 30 ppt height 50 ppt
+
 assign [app_id=obsidian] workspace 6
 assign [app_id=spotify] workspace 9
 assign [app_id=chrome-kibbaakffkfmdnmdmljdjlnhjbibdgio-Profile_1] workspace 6
@@ -38,7 +72,7 @@ for_window [title="Save File"] floating enable
 for_window [title="Save As"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable, resize set width 80ppt height 60ppt
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
-for_window [app_id=com.github.jmoerman.go-for-it] floating enable, sticky enable, resize set width 1 ppt height 1 ppt
+for_window [app_id=com.github.jmoerman.go-for-it] floating enable, sticky enable, resize set width 15 ppt height 45 ppt
 for_window [app_id=org.kde.CrowTranslate] floating enable, sticky enable, resize set width 30 ppt height 40 ppt
 for_window [class="superProductivity"] layout tabbed
 for_window [app_id="udiskie"] floating enable, sticky enable

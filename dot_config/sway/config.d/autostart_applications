@@ -10,13 +10,15 @@ exec systemctl --user set-environment XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment DISPLAY \
                                          SWAYSOCK \
                                          WAYLAND_DISPLAY \
-                                         XDG_CURRENT_DESKTOP
+                                         XDG_CURRENT_DESKTOP \
+					 XDG_RUNTIME_DIR=/run/user/$(id -u)
 
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY \
                                                   SWAYSOCK \
                                                   XDG_CURRENT_DESKTOP=sway \
-                                                  WAYLAND_DISPLAY
+                                                  WAYLAND_DISPLAY \
+						  XDG_RUNTIME_DIR
                                                   
 # Desktop notifications
 exec mako
@@ -37,7 +39,7 @@ exec swayosd-server
 exec easyeffects --gapplication-service
 
 # Rest break
-exec_always ianny
+# exec_always ianny
 
 # Display light correction for day and night
 exec_always gammastep
@@ -60,5 +62,8 @@ exec "mpris-proxy"
 # Blueman background for notifications
 exec_always blueman-applet
 
-# Keepassxc database sync to cloud
-exec rclone mount google:/Keepassxc ~/Keepassxc 
+# Cloud sync
+exec_always "rclone mount google:/Files ~/Cloud --vfs-cache-max-size=150G --vfs-cache-mode full --vfs-cache-max-age 72h  --vfs-cache-poll-interval 1m --vfs-write-back 20s --drive-acknowledge-abuse"
+
+# Break
+exec sane-break 

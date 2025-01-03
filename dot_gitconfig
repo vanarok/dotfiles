@@ -1,8 +1,6 @@
 [safe]
 	directory = *
 	
-# for not gitpod
-
 [push]
 	default = simple
 	autoSetupRemote = true
