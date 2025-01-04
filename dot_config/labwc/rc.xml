@@ -666,12 +666,11 @@
       </windowRule>
     </windowRules>
   -->
-	<windowRules>
-		<windowRule identifier="glace-todo" matchOnce="true">
-			<action name="ToggleOmnipresent"/>
-		</windowRule>
-	</windowRules>
-
+  <windowRules>
+    <windowRule identifier="glace-todo" matchOnce="true">
+      <action name="ToggleAlwaysOnTop"/>
+    </windowRule>
+  </windowRules>
   <menu>
     <ignoreButtonReleasePeriod>250</ignoreButtonReleasePeriod>
   </menu>
