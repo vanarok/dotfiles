@@ -28,7 +28,7 @@
 
   <!-- <font><theme> can be defined without an attribute to set all places -->
   <theme>
-    <name></name>
+    <name>GTK</name>
     <icon></icon>
     <titlebar>
       <layout>icon:iconify,max,close</layout>
@@ -258,31 +258,31 @@
     <keybind key="W-a">
       <action name="ToggleMaximize" />
     </keybind>
-    <keybind key="A-Left">
+    <keybind key="W-Left">
       <action name="MoveToEdge" direction="left" />
     </keybind>
-    <keybind key="A-Right">
+    <keybind key="W-Right">
       <action name="MoveToEdge" direction="right" />
     </keybind>
-    <keybind key="A-Up">
+    <keybind key="W-Up">
       <action name="MoveToEdge" direction="up" />
     </keybind>
-    <keybind key="A-Down">
+    <keybind key="W-Down">
       <action name="MoveToEdge" direction="down" />
     </keybind>
-    <keybind key="W-Left">
+    <keybind key="W-S-Left">
       <action name="SnapToEdge" direction="left" />
     </keybind>
-    <keybind key="W-Right">
+    <keybind key="W-S-Right">
       <action name="SnapToEdge" direction="right" />
     </keybind>
-    <keybind key="W-Up">
+    <keybind key="W-S-Up">
       <action name="SnapToEdge" direction="up" />
     </keybind>
-    <keybind key="W-Down">
+    <keybind key="W-S-Down">
       <action name="SnapToEdge" direction="down" />
     </keybind>
-    <keybind key="W-Space">
+    <keybind key="W-S-Space">
       <action name="ShowMenu" menu="client-menu" atCursor="no" />
     </keybind>
     <keybind key="XF86_AudioLowerVolume">
@@ -341,29 +341,29 @@
     </keybind>
   -->
 		<keybind key="W-1">
-			<action name="GoToDesktop" to="1" wrap="no" />
+			<action name="GoToDesktop" to="1" />
 		</keybind>
 		<keybind key="W-2">
-			<action name="GoToDesktop" to="2" wrap="no" />
+			<action name="GoToDesktop" to="2" />
 		</keybind>
 		<keybind key="W-3">
-			<action name="GoToDesktop" to="3" wrap="no" />
+			<action name="GoToDesktop" to="3" />
 		</keybind>
 		<keybind key="W-4">
-			<action name="GoToDesktop" to="4" wrap="no" />
+			<action name="GoToDesktop" to="4" />
 		</keybind>
 
 		<keybind key="W-S-1">
-			<action name="SendToDesktop" to="1" wrap="no" />
+			<action name="SendToDesktop" to="1" />
 		</keybind>
 		<keybind key="W-S-2">
-			<action name="SendToDesktop" to="2" wrap="no" />
+			<action name="SendToDesktop" to="2" />
 		</keybind>
 		<keybind key="W-S-3">
-			<action name="SendToDesktop" to="3" wrap="no" />
+			<action name="SendToDesktop" to="3" />
 		</keybind>
 		<keybind key="W-S-4">
-			<action name="SendToDesktop" to="4" wrap="no" />
+			<action name="SendToDesktop" to="4" />
 		</keybind>
 
 		<keybind key="W-c">
@@ -388,18 +388,18 @@
     <doubleClickTime>500</doubleClickTime>
 
     <context name="Frame">
-      <mousebind button="A-Left" action="Press">
+      <mousebind button="W-Left" action="Press">
         <action name="Focus" />
         <action name="Raise" />
       </mousebind>
-      <mousebind button="A-Left" action="Drag">
+      <mousebind button="W-Left" action="Drag">
         <action name="Move" />
       </mousebind>
-      <mousebind button="A-Right" action="Press">
+      <mousebind button="W-Right" action="Press">
         <action name="Focus" />
         <action name="Raise" />
       </mousebind>
-      <mousebind button="A-Right" action="Drag">
+      <mousebind button="W-Right" action="Drag">
         <action name="Resize" />
       </mousebind>
     </context>
