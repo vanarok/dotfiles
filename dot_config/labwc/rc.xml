@@ -367,7 +367,7 @@
 		</keybind>
 
 		<keybind key="W-c">
-			<action name="AutoPlace" policy="center" wrap="no" />
+			<action name="AutoPlace" policy="center" />
 		</keybind>
   </keyboard>
 
