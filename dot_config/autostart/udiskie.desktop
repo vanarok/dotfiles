@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=udiskie
+Exec=udiskie --no-tray --no-appindicator --notify
+StartupNotify=false
+Terminal=false
+Type=Application

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=kanshi
+Exec=kanshi
+StartupNotify=false
+Terminal=false
+Type=Application
