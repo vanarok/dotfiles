@@ -1,1 +1,2 @@
 dex -a >/dev/null 2>&1 &
+~/random_swaybg.sh >/dev/null 2>&1 &
