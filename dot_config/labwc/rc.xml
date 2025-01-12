@@ -670,6 +670,11 @@
     <windowRule identifier="glace-todo" matchOnce="true">
       <action name="ToggleAlwaysOnTop"/>
     </windowRule>
+		<windowRule identifier="sfwbar" matchOnce="true">
+			<skipTaskbar>yes</skipTaskbar>
+			<action name="MoveTo" x="0" y="0" />
+			<action name="ToggleAlwaysOnTop"/>
+		</windowRule>
   </windowRules>
   <menu>
     <ignoreButtonReleasePeriod>250</ignoreButtonReleasePeriod>

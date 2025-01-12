@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=blueman
+Exec=blueman-applet
+StartupNotify=false
+Terminal=false
+Type=Application
