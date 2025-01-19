@@ -17,4 +17,5 @@ Type=Application
 Categories=Utility;
 StartupNotify=true
 X-GNOME-Autostart-enabled=true
+Hidden=false
 
