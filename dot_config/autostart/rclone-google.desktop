@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=rclone-google
-Exec=sh /home/vanarok/.config/autostart/rclone-google.sh
-StartupNotify=false
-Terminal=false
-Type=Application

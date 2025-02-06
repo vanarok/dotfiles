@@ -18,8 +18,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000000000000
+HISTFILESIZE=1000000000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -96,8 +96,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -123,9 +123,11 @@ if [ -d "$HOME/.bashrc.d/" ]; then
   done
 fi
 
-source .env
-source .secrects
-
 PATH=~/.console-ninja/.bin:$PATH
 
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+# Auto-Warpify
+printf 'P$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "bash" }}œ' 
+
+echo $SHELL

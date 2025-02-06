@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=swayosd
-Exec=swayosd-server
-StartupNotify=false
-Terminal=false
-Type=Application
