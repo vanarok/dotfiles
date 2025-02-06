@@ -1,0 +1,6 @@
+# Added by Toolbox App
+export PATH="$PATH:/home/vanarok/.local/share/JetBrains/Toolbox/scripts"
+
+# Source user configs
+source ~/.bashrc
+
